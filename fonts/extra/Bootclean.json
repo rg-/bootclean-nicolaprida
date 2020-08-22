@@ -1,0 +1,111 @@
+{
+  "selection": [
+    {
+      "order": 2,
+      "name": "arrow-down",
+      "prevSize": 32
+    },
+    {
+      "order": 3,
+      "name": "arrow-left",
+      "prevSize": 32
+    },
+    {
+      "order": 4,
+      "name": "arrow-right",
+      "prevSize": 32
+    },
+    {
+      "order": 5,
+      "name": "arrow-up",
+      "prevSize": 32
+    }
+  ],
+  "metadata": {
+    "name": "Bootclean",
+    "importSize": {
+      "width": 56,
+      "height": 56
+    },
+    "iconsHash": 993237720
+  },
+  "height": 1024,
+  "prevSize": 32,
+  "icons": [
+    {
+      "paths": [
+        "M959.835 288.293l-25.070-24.357-431.579 444.288-431.506-444.288-25.070 24.357 456.576 470.089z"
+      ],
+      "grid": 16,
+      "tags": [
+        "arrow-down"
+      ],
+      "defaultCode": 59648
+    },
+    {
+      "paths": [
+        "M726.071 967.808l24.357-25.070-444.288-431.579 444.288-431.506-24.357-25.070-470.071 456.576z"
+      ],
+      "grid": 16,
+      "tags": [
+        "arrow-left"
+      ],
+      "defaultCode": 59649
+    },
+    {
+      "paths": [
+        "M280.357 54.583l-24.357 25.070 444.288 431.579-444.288 431.506 24.357 25.070 470.071-456.576z"
+      ],
+      "grid": 16,
+      "tags": [
+        "arrow-right"
+      ],
+      "defaultCode": 59650
+    },
+    {
+      "paths": [
+        "M46.629 734.062l25.070 24.357 431.579-444.288 431.488 444.288 25.070-24.357-456.558-470.071z"
+      ],
+      "grid": 16,
+      "tags": [
+        "arrow-up"
+      ],
+      "defaultCode": 59651
+    }
+  ],
+  "colorThemes": [],
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": false,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon",
+        "majorVersion": 1,
+        "minorVersion": 0
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false,
+      "showSelector": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon",
+      "name": "icomoon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  },
+  "IcoMoonType": "icon-set"
+}

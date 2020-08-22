@@ -1,0 +1,217 @@
+/* OLD */
+.forms-account{
+	
+	#user-registration .user-registration-MyAccount-navigation{
+		display:none;
+		&.custon_nav{
+			display:block;
+		}
+ 		ul {
+ 			.user-registration-MyAccount-navigation-link {
+ 				a{
+ 					font-family:$font_light;
+ 				}
+ 			}
+ 		}
+
+	}
+
+	#user-registration{
+		margin: 0!important;
+		background-color:transparent;
+		p{
+			color:$secondary;
+		}
+		.user-registration-profile-fields__field-wrapper{
+			margin:0;
+		}
+		.user-registration-MyAccount-content h2{
+			font-family:$font_medium;
+		}
+	} 
+	.ur-frontend-form{
+
+		.ur-form-row { 
+			.ur-form-grid{
+				padding: 0; 
+				.form-row{
+					margin-right: 0;
+					margin-left: 0;
+				}
+			} 
+		}
+
+		.ur-button-container{
+			padding:0;
+			.ur-submit-button{
+				margin-right: 0; 
+			}
+		}
+
+		p{
+			margin-bottom:20px;
+		}
+		margin: 0!important;
+		padding: 0!important;
+		border: 0!important;
+		background-color:transparent;
+
+		label,
+		.ur-label{
+			font-weight:600!important;
+		}
+
+		.password-input-group{
+			width:100%;
+		}
+		
+		.user-registration-form__label-for-checkbox{
+			padding: 4px 20px;
+			[type="checkbox"]{
+				    vertical-align: -2px;
+			}
+		} 
+
+	}
+
+
+
+	.user-registration-error{
+		position: relative;
+		padding-left: 40px;
+		width: 100%;
+		&::before{
+			position: absolute;
+			top: 2px;
+			left: 8px;
+		}
+	}
+
+	.user-registration-MyAccount-content{
+		a{
+			text-decoration:underline;
+		}
+	} 
+} 
+
+.forms-account input.input-text{
+		display: block;
+		width: 100%;
+		height: 50px;
+		padding: 0.25rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.5;
+		color: #495057;
+		background-color: $secondary;
+		background-clip: padding-box;
+		border: 2px solid #000000;
+		border-radius: 0;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+		&:focus{
+			color: #495057;
+			background-color: $secondary;
+			border-color: #404040;
+			outline: 0;
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+		}
+	}
+
+.ur-submit-button,
+.user-registration-Button{
+	padding: 10px 20px;
+	line-height: 1.5;
+	text-align: center;
+	word-break: break-word;
+	white-space: normal;
+	border: none;
+	cursor: pointer;
+	-webkit-transition: .35s all ease-out;
+	transition: .35s all ease-out;
+	color: #000;
+	background-color: $secondary;
+	border-color: $secondary;
+	&:hover {
+	    color: #000;
+	    background-color: $secondary;
+	    border-color: $secondary;
+	}
+}
+
+#user-registration.vertical .user-registration-MyAccount-navigation{
+	background-color:transparent;
+}
+#user-registration.vertical .user-registration-MyAccount-navigation ul .user-registration-MyAccount-navigation-link.is-active a{
+	background-color:transparent;
+	border-left: 4px solid $secondary;
+}
+
+.tab-form{
+
+	background-color:rgba(#000,.7);
+	padding:20px 60px 10px 60px;
+
+	.ur-form-grid label{
+		display:block;
+		width: 100%;
+	}
+	.user-registration-Button,
+	.ur-submit-button{
+		background-color:transparent;
+		border:1px solid $secondary!important;
+		color:$secondary;
+		width:100%;
+		font-size:18px;
+		margin: 20px auto;
+		&:hover{
+			background-color:$secondary;
+			border:1px solid $secondary!important;
+			color:$primary;
+		}
+	} 
+
+	.user-registration-form__label-for-checkbox{
+		margin: 11px auto;
+		font-size:13px;
+	}
+
+
+
+	.user-registration-LostPassword{
+		color:rgba($secondary, .13);
+		text-decoration:underline;
+	}
+	[data-trigger="click"]{
+		color:rgba($secondary, .13);
+		text-decoration:underline;
+	}
+
+	.nav{
+		.nav-item{
+			.btn{
+				padding:0;
+				color:rgba($secondary, .43);
+				font-size:31px; 
+				line-height: 35px;
+				font-weight:600;
+				
+				&.active{
+					color:$secondary;
+				}
+			}
+		}
+	}
+
+	.tab-content{
+		font-size:13px;
+		text-align:center;
+		a{
+			font-weight:600;
+		}
+		p{
+			margin-bottom:5px;
+		}
+	}
+
+}

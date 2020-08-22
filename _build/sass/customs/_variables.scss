@@ -1,0 +1,80 @@
+// Custom variables
+
+// Grid containers
+//
+
+$grid-gutter-width: 34px!default;
+
+// Color Scheme
+@import "variables/color-scheme";
+
+// Options
+// Quickly modify global styling by enabling or disabling optional features.
+@import "variables/options";  
+
+//$transition-collapse: opacity .35s ease !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1310px
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1250px
+) !default;
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg:                   #000 !default;
+$body-color:                #f2f3f3 !default;
+$body-text-align:           null !default;
+
+// Typography
+$font-family-sans-serif: "gilroyl", sans-serif!default;
+$font-size-base: 1.25rem !default;
+
+$font-weight-lighter:         normal !default;
+$font-weight-light:           normal !default;
+$font-weight-normal:          normal !default;
+$font-weight-bold:            normal !default;
+$font-weight-bolder:          normal !default;
+
+// navbar
+@import "variables/navbar";
+
+$link-color:                              #ffffff !default;
+$link-decoration:                         none !default;
+$link-hover-color:                        #ffffff !default;
+$link-hover-decoration:                   none !default;
+
+// Components
+
+$border-radius:               0 !default;
+$border-radius-lg:            0 !default;
+$border-radius-sm:            0 !default;
+
+
+// Forms 
+$input-height: 50px!default;
+$input-padding-y: 0.625rem!default;
+$input-padding-x: 1.25rem!default;
+$input-border-color: $primary!default; 
+$input-border-width: 2px!default;
+
+$input-placeholder-color:               #222 !default;
+$input-plaintext-color:                 $body-color !default;
+
+// Btn
+$btn-border-radius: 0!default;
+$input-btn-font-size: 1rem !default; 
+$btn-padding-y: 0.625rem!default;
+$btn-padding-x: 1.25rem!default;

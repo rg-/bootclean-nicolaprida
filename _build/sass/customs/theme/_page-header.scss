@@ -1,0 +1,118 @@
+.page-header{
+ 	
+
+ 	overflow:hidden;
+
+	.slick-slider-container {
+		 	position:relative;
+		 	&:before{
+		 		content:"";
+		 		position:absolute;
+		 		top:0;
+		 		left:0;
+		 		right:0;
+		 		height:30%;
+		 		@include gradient(rgba(0,0,0,0.6),rgba(0,0,0,0)); 
+		 		z-index:10;
+			}	
+
+	}
+	.section-title{
+		color:#fff;
+	}
+	.custom-dots{
+		position: relative;
+		
+		.slick-dots{
+			text-align: right;
+			right: 0;
+
+			li {
+				button{
+					color:#fff;
+					line-height: 1;
+					font-size: $font-size-base;
+					display:flex;
+					&:before{
+						display:none;
+					}
+				}
+			} 
+
+			.custom-arrow-n{
+				display:inline-block;
+			}
+			.custom-arrow-active{ 
+				width:0;
+				height:20px;
+				display:inline-block; 
+				position: relative; 
+				overflow:hidden;
+				@include transition(all 1.2s ease);
+				&:before{
+					height:1px;
+					background-color:$secondary;
+					width:100%;
+					content:"";
+					display:inline-block;
+					vertical-align: 4px;
+				} 
+				&:after{
+					position:absolute;
+					top: 0;
+					right: 0;
+					height:20px;
+					width:20px;
+					background:transparent url(../images/theme/icon-arrow-dot.png) center center no-repeat;
+					background-size:20px 20px;
+					content:"";
+					display:inline-block;
+					vertical-align: middle;
+					
+				}
+			}
+
+			.slick-active{
+				width:99px;
+				color:transparent; 
+				.custom-arrow-n{
+					display:none;
+				}
+				.custom-arrow-active{ 
+					width:99px;
+				}
+				button{
+					width:99px;
+				}
+			}
+
+		}
+
+	}
+
+}
+
+.page-header-overlay{ 
+	&:after{
+ 		content:"";
+ 		position:absolute;
+ 		bottom:0;
+ 		left:0;
+ 		right:0;
+ 		height:80%;
+ 		@include opacity(.6);
+ 		@include transition(all 1.2s ease);
+ 		@include gradient(rgba(0,0,0,0),rgba(0,0,0,1));
+ 		z-index:-1;
+	}	
+
+	&:hover{
+		&:after{ 
+			@include opacity(1);
+			height:90%;
+		}
+		.transition-2s{
+			top:30px; 
+		}
+	}
+}

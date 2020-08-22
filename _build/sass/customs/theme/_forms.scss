@@ -1,0 +1,51 @@
+
+
+
+.form-control{
+	letter-spacing: 2px;
+}
+.search-form,
+.form-controls-transparent {
+
+    .search-field,
+    .form-control{ 
+        background-color:transparent;
+        border-color:transparent;
+        color:$body-color;
+        box-shadow: none;
+
+        &::placeholder {
+        	text-transform:uppercase; 
+        }
+        &:focus{
+            color:$body-color; 
+        	border-color:transparent;
+        }
+    }
+    .form-control:not(.m-form-control-animated){
+        &::placeholder {
+            color:$primary; 
+        }
+    }
+    textarea{
+        resize:none;
+        padding-top:15px;
+        padding-bottom:15px;
+        min-height:175px;
+    }
+}
+
+.invalid .form-control[aria-invalid="false"]{
+    border-color:transparent;
+    @include WPBC-box-shadow(none);
+    background-image: linear-gradient(0deg, $success 2px, $success 2px);
+}
+.invalid .form-control[aria-invalid="true"]{
+    border-color:transparent;
+    @include WPBC-box-shadow(none);
+    background-image: linear-gradient(0deg, $danger 2px, $danger 2px);
+}
+div.wpcf7-response-output{
+    padding:0;
+    border:0;
+}

@@ -1,0 +1,73 @@
+
+.landing-page-header{
+	.lead{
+		@include breakpoint-max(md){
+			font-size: 18px;
+		}
+	}
+}
+
+.ui-plan-box{ 
+	
+	@include breakpoint-max(md){
+		max-width: 320px;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+	
+
+	.ui-plan-head{
+
+		.ui-featured-title{
+			font-size: 22px;
+    	margin-bottom: 16px;
+			display: block;
+		}
+		.ui-plan-title{
+			line-height: 1;
+		}
+
+		small{
+			font-size: 18px;
+			display: block;
+		}
+
+		.title-name{
+			text-transform: uppercase;
+			margin-top: 6px;
+			display: block;
+			letter-spacing: .8px;
+		}
+
+	}
+
+	.ui-plan-precio{
+		.price{
+			font-size: 58px;
+			line-height: 47px;
+			.woocommerce-Price-amount{
+
+			}
+			.woocommerce-Price-currencySymbol{
+				font-size:14px;
+				vertical-align: text-top;	
+			}
+		}
+	}
+
+	.ui-plan-content{
+
+		
+	}
+
+}
+
+.ui-title-spanned{
+	font-size: 16px;
+	b{
+		font-size: 28px;
+		font-family: 'gilroyeb';
+		display: block;
+		line-height: 1;
+	}
+}

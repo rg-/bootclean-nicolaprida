@@ -1,0 +1,64 @@
+/* < ------------------------------ */
+
+// .bc-full-aside-cols
+
+.bc-full-aside-cols{ 
+    height:100%;
+    position:relative; 
+    @include breakpoint-max(sm){
+        height:auto;  
+    } 
+    .col-fullside{ 
+        position:absolute;
+        height:100%;
+        padding:0; 
+        .image-cover{
+            background-position:center center;
+        }
+        @include breakpoint-max(sm){
+            position:relative;
+            height:auto;
+        }
+    } 
+
+    &.content-right{ 
+        .col-content{
+            margin-left:auto; 
+            @include breakpoint-max(md){  
+            }
+        }
+    }
+    &.content-left{
+        .col-content{ 
+            @include breakpoint-max(md){  
+            }
+        } 
+        .col-fullside{
+            right:0;
+        }
+    }
+
+    @include breakpoint-max(sm){ 
+        .col-content{ 
+        }
+    }
+
+
+    @include breakpoint(md){
+
+        .col-fullside{
+
+            .embed-responsive{
+                height: 100%;
+                &::before{
+                    padding-top:0!important;
+                    display:none;
+                }
+            }
+            .embed-responsive-item{
+                position:relative;
+            }
+        }
+    }
+}
+/* ------------------------------ /> */

@@ -1,0 +1,79 @@
+//
+// Color system
+// https://coolors.co/004e86-5f0f40-9a031e-fb8b24-e36414
+//
+
+$primary: #000000!default;
+$secondary: #f2f3f3!default; 
+$light: $secondary!default; 
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "white":    #ffffff
+), $theme-colors); 
+
+// stylelint-disable
+
+/*
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+/*
+
+/*
+$blue:    #0B486B !default;
+$indigo:  #6610f2 !default;
+$purple:  #BD1550 !default;
+$pink:    #FE4365 !default;
+$red:     #dc3545 !default;
+$orange:  #E97F02 !default;
+$yellow:  #F8CA00 !default;
+$green:   #8A9B0F !default;
+$teal:    #83AF9B !default;
+$cyan:    #00A0B0 !default;
+/*
+
+/*
+
+$primary:       $green !default;
+$secondary:     $purple !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+*/
+
+// No need to add primary, secondary and so on, just the custom ones. This way $theme-colors also will include all custom ones, so bg-blue, btn-blue, etc, will work
+// $theme-colors: () !default;
+/*
+
+$theme-colors: map-merge((
+  "blue":    $blue,
+  "indigo":  $indigo,
+  "purple":    $purple,
+  "pink":       $pink,
+  "red":    $red,
+  "orange":     $orange,
+  "yellow":      $yellow,
+  "green":       $green,
+  "teal":       $teal,
+  "cyan":       $cyan
+), $theme-colors); 
+
+*/
+
+// $colors: () !default;
+// $colors: map-remove( $colors, "blue", "indigo", "purple");
+
+// $theme-colors: map-remove($theme-colors, "success", "info", "danger");

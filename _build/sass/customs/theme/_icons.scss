@@ -1,0 +1,58 @@
+[class*="theme-icon-"]{
+
+    width:100px; height:100px;
+    background-size:100px 100px;
+    background-position:center center;
+    background-color:transparent;
+    background-repeat:no-repeat; 
+    display:inline-block;
+
+    &.sm{
+    	width:36px; height:36px;
+    	background-size:36px 36px;
+    }
+    &.xs{
+    	width:28px; height:28px;
+    	background-size:28px 28px;
+    } 
+    &.xxs{
+        width:22px; height:22px;
+        background-size:22px 22px;
+    } 
+}
+
+.btn [class*="theme-icon-"]{
+    vertical-align:middle;
+}
+.stars{
+    [class*="theme-icon-"]{
+        width:28px; height:28px;
+        background-size:28px 28px;
+    }
+}
+
+.theme-icon-star{
+    background-image:url('../images/theme/icon-star.png');
+}
+.theme-icon-angle-up{
+    background-image:url('../images/theme/icon-angle-up.png');
+}
+.theme-icon-angle-down{
+    background-image:url('../images/theme/icon-angle-down.png');
+}
+.theme-icon-angle-left{
+    background-image:url('../images/theme/icon-angle-left.png');
+}
+.theme-icon-angle-right{
+    background-image:url('../images/theme/icon-angle-right.png');
+}
+
+.theme-icon-fruits{
+	background-image:url('../images/theme/icon-fruits.png');
+}
+.theme-icon-seafood{
+	background-image:url('../images/theme/icon-seafood.png');
+}
+.theme-icon-vegetables{
+	background-image:url('../images/theme/icon-vegetables.png');
+}

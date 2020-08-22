@@ -1,0 +1,31 @@
+#go-up{
+	@include scale(.8);
+	.icon_arrow{ 
+	}
+	&:hover{
+		@include scale(1);
+	}
+}
+.btn {
+ 	letter-spacing: 2px;
+ }
+.btn-secondary{
+	color:#fff;
+}
+.btn-white{
+	color:$primary;
+}
+.btn-max{
+	width:133px;
+	max-width:100%;
+}
+
+.btn-link {
+	color:#fff; 
+	font-style:italic;
+	padding-left:0;
+	padding-right:0;
+	&:hover{
+		color:$secondary;
+	}
+}
