@@ -1,0 +1,21 @@
+
+
+- landing:
+
+		- scroll offset 0 al no haber mainnav
+
+		- cambiar a que sea una pagina /landing y no la home
+			dejar Videos de nuevo como home
+
+
+- users/loged/etc
+
+		- mostrar un mensaje fixed top segun si se tiene o no subscripcion activa
+
+
+- al estar logueado y sin subscripcion activa
+
+
+- woo emails
+
+		- colores / estilos revisar

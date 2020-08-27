@@ -16,6 +16,28 @@ function build_ui_headline_3_cols($layouts){
 			)
 		);  
 
+		$sub_fields[] = WPBC_acf_make_image_field(
+			array(
+				'name' => $pre_fix.'__'.'col_image_1',
+				'label'=>'Imagen 1', 
+				'width' => '33%', 
+			)
+		);
+		$sub_fields[] = WPBC_acf_make_image_field(
+			array(
+				'name' => $pre_fix.'__'.'col_image_2',
+				'label'=>'Imagen 2', 
+				'width' => '33%', 
+			)
+		);
+		$sub_fields[] = WPBC_acf_make_image_field(
+			array(
+				'name' => $pre_fix.'__'.'col_image_3',
+				'label'=>'Imagen 3', 
+				'width' => '33%', 
+			)
+		);
+
 		$sub_fields[] = WPBC_acf_make_textarea_field(
 			array(
 				'name' => $pre_fix.'__'.'col_1',

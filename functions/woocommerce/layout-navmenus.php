@@ -1,5 +1,17 @@
 <?php
 
+add_action('wpbc/layout/start', function(){
+
+	$landing_page = WPBC_get_field('landing_page','options');
+
+	if(!is_user_logged_in() && is_page($landing_page)){ 
+		// remove_action('wpbc/layout/start','WPBC_layout_struture__main_navbar',10); 
+	}
+
+	echo do_shortcode('[WPBC_get_template name="parts/fixed-top-messages"]');
+
+},0);
+
 /*
 	main-navbar args for woo pages here
 */
@@ -15,6 +27,27 @@ add_filter('wpbc/filter/layout/main-navbar/defaults', function($args){
 
 	if( is_shop() || is_account_page() ){ 
 		$args['affix_defaults']['simulate'] = true;
+	}
+
+	$landing_page = WPBC_get_field('landing_page','options');
+	if(!is_user_logged_in() && ( is_page($landing_page) ) ){ 
+			 
+		$args['affix'] = false;
+		$args['affix_defaults']['simulate'] = false;
+		$args['navbar_brand'] = false;
+		$args['class'] .= ' affix-absolute-top py-2'; 
+ 		$args['wp_nav_menu']['theme_location'] = 'right_menu';
+
+ 		//$args['navbar_toggler'] = false;
+		//$args['wp_nav_menu'] = false;
+
+	}
+
+	if(!is_user_logged_in() && is_checkout()){ 
+		$args['affix'] = false;
+		$args['affix_defaults']['simulate'] = false; 
+		$args['class'] .= ' affix-absolute-top '; 
+ 		$args['wp_nav_menu']['theme_location'] = 'right_menu';
 	}
 
 	return $args;

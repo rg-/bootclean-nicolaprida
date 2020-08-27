@@ -1,6 +1,9 @@
 <?php
 
-
+/* Disable ACF Form on front-end */
+add_filter('wpbc/filter/acf/enable_acf_form',function(){
+	return false;
+});
 /*
 
 	Add custom field into Page Settings > Main Navbar 

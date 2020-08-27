@@ -186,4 +186,4 @@ function btn_lg_scroll_FX($atts, $content = null, $tag){
 
 	return '<a href="'.$href.'" class="btn btn-lg btn-'.$color.'">'.$label.'</a>';
 }
-add_shortcode('btn_lg_scroll','btn_lg_scroll_FX'); 
+add_shortcode('btn_lg_scroll','btn_lg_scroll_FX');  

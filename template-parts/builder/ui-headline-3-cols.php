@@ -42,7 +42,7 @@ if(empty($section['section_visible'])){
 	$content = get_sub_field('field_'.$layout_prefix.'__'.'content', $post_id);
 	if(!empty($content)){
 	?>
-	<div class="container gpb-6">
+	<div class="container gpb-4">
 		<div class="row">
 			<div class="col-md-8 mx-auto text-center">
 				<?php echo $content; ?>
@@ -55,16 +55,38 @@ if(empty($section['section_visible'])){
 	$col_1 = get_sub_field('field_'.$layout_prefix.'__'.'col_1', $post_id);
 	$col_2 = get_sub_field('field_'.$layout_prefix.'__'.'col_2', $post_id);
 	$col_3 = get_sub_field('field_'.$layout_prefix.'__'.'col_3', $post_id); 
+	$col_img_1 = get_sub_field('field_'.$layout_prefix.'__'.'col_image_1', $post_id);
+	$col_img_2 = get_sub_field('field_'.$layout_prefix.'__'.'col_image_2', $post_id);
+	$col_img_3 = get_sub_field('field_'.$layout_prefix.'__'.'col_image_3', $post_id); 
 	$cols = array(
-		$col_1, $col_2, $col_3 
+		array(
+			'text' => $col_1,
+			'image' => $col_img_1,
+		),
+		array(
+			'text' => $col_2,
+			'image' => $col_img_2,
+		),
+		array(
+			'text' => $col_3,
+			'image' => $col_img_3,
+		), 
 	);
 	?>
 	<div class="container">
 		<div class="row">
 			<?php foreach($cols as $col=>$value){ ?>
 				<div class="col-lg-4 text-center">
+					<div class="position-relative gmb-2">
+						<?php
+						if( !empty($value['image']['id']) ){
+							$src = '[WPBC_get_attachment_image_src id='. $value['image']['id'] .']';
+							echo '<img src="'.$src.'" alt=" "/>';
+						}
+						?>
+					</div>
 					<div class="ui-title-spanned gpx-lg-2">
-						<?php echo $value; ?>
+						<?php echo $value['text']; ?>
 					</div>
 				</div>
 			<?php } ?>

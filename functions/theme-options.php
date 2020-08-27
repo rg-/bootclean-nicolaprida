@@ -20,12 +20,12 @@ add_filter('WPBC_layout_debug',function(){
 
 /*
 
-	Disable Dynamic Template Arguments on template_part_args flexible row layou
+	Disable Dynamic Template Arguments on template_part_args flexible row layout
 
 */
 
 	add_filter('wpbc/acf/reusables/template_part_args/use_builder_layout_row_data', function($use_builder_layout_row_data){
-		return false;
+		return true;
 	},10,1);
 
 /*

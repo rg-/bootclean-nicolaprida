@@ -205,6 +205,30 @@ if( function_exists('acf_add_options_page') ) {
 		)
 	);
 
+	$fields[] = array(
+				'key' => 'field_landing_page',
+				'label' => __('Página Landing','nicolaprida'),
+				'name' => 'landing_page',
+				'type' => 'post_object',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => array(
+				),
+				'allow_null' => 1,
+				'multiple' => 0,
+				'return_format' => 'id',
+				'ui' => 1,
+			);
+
 	$fields[] = array (
 		'key' => 'field_settings_footer',
 		'label' => __('Footer','nicolaprida'),

@@ -5,21 +5,20 @@ html,body {
 $font_light: 'gilroyl';
 $font_medium: 'gilroy';
 $font_bold: 'gilroyeb';
-$font_semi_bold: 'gilroysb';
+$font_semi_bold: 'gilroysb'; 
 
-b, strong{
-	font-weight: bold;
+
+.fixed-top-messages{
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	z-index: 1040;
+	background:transparent;
+	color:#fff;
+	font-size: 14px;
 }
 
-.font-gilroyem{
-	font-family: $font_medium!important;
-}
-.font-gilroyeb{
-	font-family: $font_bold!important;
-}
-.font-gilroysb{
-	font-family: $font_semi_bold!important;
-}
 
 .pagination{
 	flex-wrap:wrap;
@@ -52,9 +51,33 @@ b, strong{
 @import "theme/main-navbar";
 @import "theme/main-footer";
 @import "theme/main-woocommerce";
+
+@import "theme/typo";
+
 @import "theme/landing";
 @import "theme/data-is-inview";
 //@import "theme/woocommerce"; 
+
+.piramide-de-performance{
+	.section-title{
+		font-size: 28px!important;
+		margin-bottom:18px;
+	}
+	.btn{
+		font-size: 18px;
+		padding: 14px 20px;
+		margin-bottom: -1px;
+	}
+	.btn-last{
+		padding-left: 70px;
+		padding-right: 70px;
+		max-width: 100%;
+		font-family: 'gilroysb';
+	}
+	.text-light{
+		@include opacity(.6);
+	}
+}
 
 button,
 .btn{
@@ -133,55 +156,8 @@ body.single-video{
 	@include breakpoint(md){
 		margin-top:0;
 	}
-	.section-title{
-		font-size:28px;
-		font-weight: 400; 
-		margin-bottom:15px;
-	}
-}
-
-// @import "theme/specific"; 
-
-
-.section-title{ 
-	font-weight:normal;
-	font-family: $font_medium;
-	&.xl{
-		font-size:38px;
-		line-height: 42px;
-		margin-bottom:20px;
-		font-family: $font_semi_bold;
-		@include breakpoint(md){
-			font-size:60px;
-			line-height: 57px;
-		}
-	}
-	&.md{
-		font-size:32px;
-		line-height: 40px;
-		margin-bottom:20px;
-		@include breakpoint(md){
-			font-size:50px;
-			line-height: 47px;
-		}
-	}
-	&.sm{
-		font-size:24px;
-	}
-	&.videos-title{
-		margin-bottom: 37px;
-	}
-	&.rutinas-title{
-		font-size: 50px;
-		margin-bottom: 40px;
-		line-height: 60px;
-	}
-
-	small.t{
-		font-family: 'gilroyl';
-		font-size: 14px;
-	}
-}
+	
+} 
 
 .uielements-white{
 	#go-up{
@@ -353,6 +329,16 @@ body.single-video, body.single-post{
 		font-size: 22px;
 	}
 }
+.btn-blg{
+	padding: 0.5rem 1.5rem;
+	font-size: 18px;
+	font-family: "gilroysb" !important;
+	border-width:2px;
+	@include breakpoint(md){
+		font-size: 22px;
+	}
+}
+
 .entry_meta{
 	.btn{
 		box-shadow:0 0 2px 0 rgba(#000, .3);
@@ -592,4 +578,74 @@ input:-webkit-autofill:active {
   -webkit-text-color: #fff !important;
   color:#fff !important;
   font-size: 1.5rem;
+}
+
+
+.theme-slick-slider{
+	.slick-dots{
+		position: relative;
+		border: 0;
+		padding: 38px 0 0 0;
+		li button:before{
+			font-size: 14px;
+		}
+	}
+
+	.slick-prev, .slick-next{
+
+		width: 58px;
+		height: 58px;
+    background: #fff;
+
+    &:hover{
+    	background: #fff;
+    }
+
+    &:before,&:after{
+			color: #000;
+			font-family: 'icomoon' !important;
+    }
+
+    &.slick-prev {
+			left: -12px;
+		}
+		&.slick-next {
+			right: -12px;
+		}
+
+    &.slick-prev:before {
+			content: "\e901";
+		}
+
+		&.slick-next:before {
+			content: "\e902";
+		}
+
+	}
+} 
+
+.testimonios-slider{
+	.slick-prev, .slick-next{
+
+		background: #000;
+		@include translate(0, 0);
+    top: inherit; 
+    bottom:0;
+
+    &:hover{
+    	background: #000;
+    }
+
+    &:before,&:after{
+			color: #fff; 
+    }
+
+    &.slick-prev {
+			left: 0;
+		}
+		&.slick-next {
+			right: 0;
+		}
+
+	}
 }

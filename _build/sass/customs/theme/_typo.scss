@@ -1,41 +1,112 @@
-.section-title{ 
-	line-height: 1; 
-	@include class-breakpoint(50px, 50px, 50px, 50px, 50px, 'font-size' );
-	color:$primary;
-	margin-bottom: 28px;
-	&.md{
-		@include class-breakpoint(40px, 40px, 40px, 40px, 40px, 'font-size' );
-	} 
-	&.xs{
-		@include class-breakpoint(25px, 25px, 25px, 25px, 25px, 'font-size' );
-	}
-	&.xxs,
-	> small{
-		@include class-breakpoint(20px, 20px, 20px, 20px, 20px, 'font-size' );
-	}
- 
-} 
+b, strong{
+	font-weight: bold;
+}
 
-ul.list-default{
-	padding:0;
-	margin: 0 0 17px 0;
-	list-style:none;
-	li{
-		font-size:1.1rem;
-		letter-spacing: 1px; 
-		line-height:1.3;
-		margin-bottom: 24px;
-		padding: 0 17px 0 24px;
-		position:relative;
-		&:before{
-			content:"";
-			width:6px;
-			height:6px;
-			background-color:$secondary;
-			border-radius:3px;
-			position:absolute;
-			top:8px;
-			left:3px;
+.font-gilroyem{
+	font-family: $font_medium!important;
+}
+.font-gilroyeb{
+	font-family: $font_bold!important;
+}
+.font-gilroysb{
+	font-family: $font_semi_bold!important;
+}
+
+.section-title{ 
+	font-weight:normal;
+	font-family: $font_medium;
+	&.xl{
+		font-size:38px;
+		line-height: 42px;
+		margin-bottom:20px;
+		font-family: $font_semi_bold;
+		@include breakpoint(md){
+			font-size:60px;
+			line-height: 57px;
 		}
 	}
+	&.md{
+		font-size:32px;
+		line-height: 40px;
+		margin-bottom:20px;
+		@include breakpoint(md){
+			font-size:50px;
+			line-height: 47px;
+		}
+	}
+	&.smd{
+		font-size:32px;
+		line-height: 40px;
+		margin-bottom:20px;
+		@include breakpoint(md){
+			font-size:40px;
+			line-height: 44px;
+		}
+	}
+	&.sm{
+		font-size:24px;
+	}
+	&.videos-title{
+		margin-bottom: 37px;
+	}
+	&.rutinas-title{
+		font-size: 50px;
+		margin-bottom: 40px;
+		line-height: 60px;
+	}
+
+	small.t{
+		font-family: 'gilroyl';
+		font-size: 14px;
+	}
 }
+
+.font-14{
+	font-size: 14px!important;
+}
+
+.widget-box {
+ 	.section-title{
+		font-size:28px;
+		font-weight: 400; 
+		margin-bottom:15px;
+	}
+ }
+
+
+ ul.list-tick{
+ 	margin:0;
+ 	padding: 0;
+ 	list-style: none;
+ 	font-size: 24px;
+ 	li{
+ 		margin:$grid-gutter*2 0;
+ 		position: relative;
+ 		padding-left:60px;
+ 		&:before{
+ 			content: "";
+ 			width: 48px;
+ 			height: 48px;
+ 			background-image:url('../images/theme/icon-tick.png');
+ 			background-repeat:no-repeat;
+ 			background-position:center center;
+			display: block;
+			background-size: 48px auto;
+			position: absolute;
+			left: 0px;
+ 		}
+
+ 		&.no-icon:before{
+ 			display: none;
+ 		}
+ 	}
+
+ }
+
+ ul.list-dot{
+ 	font-size: 16px;
+ 	padding: 0 0 0 20px;
+ 	li{
+ 		margin:$grid-gutter 0;
+ 	}
+ }

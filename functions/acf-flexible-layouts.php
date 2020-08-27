@@ -1,12 +1,60 @@
 <?php
 
+add_filter('WPBC_acf_reusables_fields', function($fields){ 
+		$fields[] = array (
+			'key' => 'field_reusable_visible_conditional',
+			'label' => 'Ocultar para Clientes',
+			'name' => 'reusable_visible_conditional',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => 'wpbc-true_false-ui',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+			'ui' => 1,
+			'ui_on_text' => '',
+			'ui_off_text' => '',
+		);
+		return $fields;
+
+	},20,1);
+
+add_filter('WPBC_group_builder__layout_template_part_row_clone', function($clone){
+	//$clone[8] = 'field_reusable_visible_conditional';
+	$clone = array(
+		0 => 'key__r_tab__content',
+		1 => 'key__r_wpbc_template_part', // The reusable added
+		2 => 'key__r_wpbc_template_part_args', // The reusable added
+		3 => 'key__r_wpbc_template_args', // The reusable added
+		4 => 'key__r_tab__settings',
+		5 => 'key__r_builder_classes_group',
+		6 => 'key__r_tab__advanced',
+		7 => 'field_reusable_visible_conditional',  
+	);
+  return $clone;
+},10,1);
+
 function _wpbc_get_flexible_layouts(){
 	$layouts = array( 
 		'ui-box-full-cover',
+		'ui-box-full-cover-html',
 		'ui-subscriptions', 
 		'ui-headline', 
+		
 		'ui-headline-4-cols', 
 		'ui-headline-3-cols', 
+		'ui-slider-rows', 
+		'ui-free-tour',  
+
+		'ui-box-content-2-cols', 
+
+		'ui-slider-testimonios', 
+
 	);
 	return $layouts;
 }
@@ -24,14 +72,15 @@ function WPBC_acf_get_flexible_content_layout($layout_prefix, $post_id){
 	$section_subtitle = get_sub_field($sub_prefix.'section-subtitle', $post_id);
 
 	// get/generate section_id 
-	if( !empty( get_sub_field($sub_prefix.'section-id', $post_id) ) ){
-		$section_id = sanitize_title($section_id);
-	}else{
-		$section_id = !empty($section_title) ? sanitize_title($section_title) : $layout_prefix.'-'.uniqid();
-	}
+	$section_id = !empty($section_title) ? sanitize_title($section_title) : $layout_prefix.'-'.uniqid();
 
 	// get section options
 	$section_options = get_sub_field($sub_prefix.'section_options', $post_id);
+
+		// get section id used on setting options if used
+		if(!empty($section_options[$layout_prefix.'__section-id'])){
+			$section_id = $section_options[$layout_prefix.'__section-id'];
+		}
 		$section_options_style = $section_options[$layout_prefix.'__section_options_style'];
 		$section_options_visible = $section_options[$layout_prefix.'__section_options_visible'];
 
@@ -70,7 +119,7 @@ function WPBC_acf_make_flexible_content_layout($args=array(), $layouts=array()){
 			)
 		);
 			if(empty($args['hide_section_title'])){
-				$sub_fields[] = WPBC_acf_make_text_field(
+				$sub_fields[] = WPBC_acf_make_textarea_field(
 					array(
 						'name' => $layout_name.'__section-title',
 						'label'=>'Título de sección', 
@@ -79,7 +128,7 @@ function WPBC_acf_make_flexible_content_layout($args=array(), $layouts=array()){
 					)
 				);
 			}
-			if(empty($args['hide_section_title'])){
+			if(empty($args['hide_section_subtitle'])){
 				$sub_fields[] = WPBC_acf_make_text_field(
 					array(
 						'name' => $layout_name.'__section-subtitle',
@@ -178,6 +227,25 @@ function WPBC_acf_make_flexible_content_layout($args=array(), $layouts=array()){
 							'class' => 'wpbc-group-no-border wpbc-group-no-label',
 						)
 					); 
+
+
+			$sub_fields[] = WPBC_acf_make_tab_field(
+				array(
+					'key' => $layout_name.'__section_advanced_tab',
+					'label'=>_x('Advanced', 'bootclean'),
+					'placement' => 'top',
+				)
+			); 
+
+				$sub_fields[] = WPBC_acf_make_true_false_field(
+							array(
+								'name' => $layout_name.'__section_visible_conditional',
+								'label'=>'Ocultar para Clientes',  
+								'default_value' => 0, 
+								'message' => '',
+								'width' => '20%', 
+							)
+						); 
 
 		$layouts['layout_'.$layout_name] = array(
 			'key' => 'layout_'.$layout_name,

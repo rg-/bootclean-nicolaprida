@@ -1,6 +1,15 @@
 <?php
 
-function WPBC_create_video_post_type() {
+function WPBC_create_video_post_type() { 
+
+
+	// Enable this type for the Private metabox
+	add_filter('wpbc/filter/private_areas/location_post_types', function($location_post_types){
+		$location_post_types[] = 'video'; 
+		return $location_post_types;
+	},10,1);
+
+
 	$labels = array(
 		'name' => _x('Video', 'nicolaprida'),
 		'singular_name' => _x('Video', 'nicolaprida'),

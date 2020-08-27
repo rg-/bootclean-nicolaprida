@@ -1,5 +1,12 @@
 <?php
 
+function child_register_nav_menu(){
+  register_nav_menus( array( 
+      'right_menu'  => __( 'Menu Secundario'),
+  ) ); 
+}
+add_action( 'after_setup_theme', 'child_register_nav_menu', 0 );
+
 /*
 
 	Filter main-navbar settings
@@ -69,15 +76,7 @@ add_filter('wpbc/filter/layout/main-navbar/defaults', function($args){
 	$args['affix_defaults']['scrollify'] = true; 
 	
 	return $args;
-},10,1);  
-
-
-
-add_action('wpbc/layout/start', function(){
-	if(!is_user_logged_in() && is_front_page()){ 
-		remove_action('wpbc/layout/start','WPBC_layout_struture__main_navbar',10);
-	}
-},0);
+},10,1);   
 
 /*
 

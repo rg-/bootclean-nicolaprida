@@ -34,8 +34,7 @@ include('functions/acf-flexible-layouts.php');
 
 include('functions/acf-layout__template_tabs_row.php');
 
-include('functions/post_type-post.php');
-include('functions/post_type-videos.php'); 
+
 
 
 include('functions/plugin-favorite-post.php');
@@ -77,6 +76,9 @@ if( class_exists( 'WooCommerce' ) ){
 // include('functions/template-landing.php');
 
 /* ################################################################################## */
+
+include('functions/post_type-post.php');
+include('functions/post_type-videos.php'); 
 
 
 function custom_hide_admin_bar_settings()
