@@ -83,7 +83,7 @@ add_filter('wpbc/body/class', 'woocommerce_body_class',10,1 );
 function woocommerce_body_class($class){
 	$post_type = get_post_type();
 	if( is_shop() || is_cart() || is_checkout() || $post_type == 'product' || is_account_page() ){ 
-		$class .= ' single-header ';
+		// $class .= ' single-header ';
 	}
 	return $class;
 }

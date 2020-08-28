@@ -4,7 +4,10 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class($post_class); ?>> 
 
 	<?php if( apply_filters('WPBC_post_header_show',1) ) {?>
-		<h2 class="gmb-2 section-title <?php echo apply_filters('WPBC_post_header_title_class',''); ?>"><?php the_title(); ?></h2>
+		<h2 class="<?php echo apply_filters('WPBC_post_header_title_class','gmb-2 section-title'); ?>"><?php $title = get_the_title(); 
+		$title = apply_filters('WPBC_post_header_title', $title, '', '');
+		echo $title;
+		?></h2>
 	<?php } ?>
 	
 	<div class="<?php echo apply_filters('laprida/single/page/entry-content/class','gmt-2 gmb-1 entry-content'); ?>">

@@ -7733,8 +7733,17 @@ html, body {
 	".wpbc-woo" added by 'wpbc/body/class' filter, see woocommerce/layout
 
 */
+.wpbc-woo .blockUI.blockOverlay {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  background-image: url("../images/loaders/tail-spin.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: 50px auto !important; }
+
 /* buttons general */
 .woo-form-title,
+.woocommerce-order-details h2,
+.woocommerce-customer-details h2,
 .woocommerce-billing-fields h3,
 .woocommerce-additional-fields h3,
 .woocommerce-MyAccount-content h2 {
@@ -7742,6 +7751,14 @@ html, body {
   margin-bottom: 28px !important;
   font-weight: normal;
   font-family: "gilroy"; }
+  @media (min-width: 768px) {
+    .woo-form-title,
+    .woocommerce-order-details h2,
+    .woocommerce-customer-details h2,
+    .woocommerce-billing-fields h3,
+    .woocommerce-additional-fields h3,
+    .woocommerce-MyAccount-content h2 {
+      font-size: 2.5rem; } }
 
 .wpbc-woo .woocommerce-MyAccount-content h3 {
   font-size: 1.4rem;
@@ -7795,7 +7812,7 @@ html, body {
   border-color: #28a745;
   background-color: #28a745;
   padding: 4px 10px !important;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none; }
   .wpbc-woo .woocommerce a.edit:hover,
   .wpbc-woo .woocommerce .addresses .title .edit:hover,
@@ -7898,49 +7915,48 @@ html, body {
     .woocommerce .woo-account-login-tabs .nav .nav-item .btn.collapsed {
       color: rgba(242, 243, 243, 0.43); }
 
-.woo-account-panels {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 34px; }
-  .woo-account-panels .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--downloads {
-    display: none !important; }
-  .woo-account-panels .woocommerce-MyAccount-navigation ul {
-    border: 0 !important;
-    background-color: transparent !important;
-    padding: 0 !important; }
-    .woo-account-panels .woocommerce-MyAccount-navigation ul li {
-      margin: 0; }
-      .woo-account-panels .woocommerce-MyAccount-navigation ul li a {
-        font-family: "gilroyl";
-        padding: 10px 15px;
-        display: block;
-        font-weight: 400;
-        font-size: 14px; }
-      .woo-account-panels .woocommerce-MyAccount-navigation ul li.is-active a {
-        color: #f2f3f3 !important;
-        border-left: 4px solid #f2f3f3;
-        font-weight: 600; }
-  .woo-account-panels .woocommerce-MyAccount-content {
-    padding-top: 24px;
-    padding-bottom: 24px; }
-    .woo-account-panels .woocommerce-MyAccount-content > p {
-      display: none; }
-    .woo-account-panels .woocommerce-MyAccount-content > p:first-child {
-      font-family: "gilroy";
-      font-size: 28px;
+.woo-account-panels .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--downloads {
+  display: none !important; }
+.woo-account-panels .woocommerce-MyAccount-navigation ul {
+  border: 0 !important;
+  background-color: transparent !important;
+  padding: 0 !important; }
+  .woo-account-panels .woocommerce-MyAccount-navigation ul li {
+    margin: 0; }
+    .woo-account-panels .woocommerce-MyAccount-navigation ul li a {
+      font-family: "gilroyl";
+      padding: 15px 15px !important;
+      display: block;
       font-weight: 400;
-      margin-bottom: 30px; }
-    .woo-account-panels .woocommerce-MyAccount-content .woo-account-panel-dashboard-profile_name .section-title {
-      margin-bottom: 0 !important; }
-    .woo-account-panels .woocommerce-MyAccount-content .form-row label {
-      font-size: 1.1rem; }
+      font-size: 16px; }
+    .woo-account-panels .woocommerce-MyAccount-navigation ul li.is-active a {
+      color: #f2f3f3 !important;
+      border-left: 4px solid #f2f3f3;
+      font-weight: 600; }
+.woo-account-panels .woocommerce-MyAccount-content {
+  padding-top: 24px;
+  padding-bottom: 24px; }
+  .woo-account-panels .woocommerce-MyAccount-content > p {
+    display: none; }
+  .woo-account-panels .woocommerce-MyAccount-content > p:first-child {
+    font-family: "gilroy";
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 30px; }
+  .woo-account-panels .woocommerce-MyAccount-content .woo-account-panel-dashboard-profile_name .section-title {
+    margin-bottom: 0 !important; }
+  .woo-account-panels .woocommerce-MyAccount-content .form-row label {
+    font-size: 1.1rem; }
 
 .woocommerce .woocommerce-Address address,
 .woocommerce .woocommerce-Addresses address,
 .woocommerce .woocommerce-customer-details address {
-  background: #f2f3f3;
-  color: #000000;
-  padding: 18px 28px 22px 28px;
+  background: transparent;
+  color: #f2f3f3;
+  padding: 18px 0 22px 0;
   margin-bottom: 22px;
+  font-size: 18px;
+  line-height: 34px;
   border-radius: 0; }
 
 /* myaccount END */
@@ -7959,20 +7975,52 @@ html, body {
 /* woocommerce-notices END */
 /* tables */
 .woocommerce table.shop_table {
-  background: #f2f3f3;
-  color: #000000;
+  background: transparent;
+  color: #f2f3f3;
+  border-collapse: collapse;
+  margin-bottom: 54px;
   border-radius: 0; }
   .woocommerce table.shop_table a {
-    color: #000000;
+    color: #f2f3f3;
     text-decoration: underline; }
   .woocommerce table.shop_table td, .woocommerce table.shop_table th {
-    padding: 6px 14px !important; }
+    padding: 10px 0 !important;
+    border-bottom: 1px solid rgba(242, 243, 243, 0.6); }
 
 /*
 
 	checkout
 
 */
+.woo-is_checkout .woocommerce-thankyou-order-received {
+  text-align: center;
+  font-size: 21px;
+  font-family: 'gilroysb'; }
+  .woo-is_checkout .woocommerce-thankyou-order-received small {
+    font-family: 'gilroy'; }
+.woo-is_checkout ul.woocommerce-thankyou-order-details.order_details {
+  margin: 50px 0 30px 0 !important;
+  padding: 0;
+  display: flex; }
+  .woo-is_checkout ul.woocommerce-thankyou-order-details.order_details li {
+    font-size: 18px;
+    line-height: 30px;
+    float: none;
+    margin-right: 0;
+    border: 0;
+    color: #6c757d; }
+    .woo-is_checkout ul.woocommerce-thankyou-order-details.order_details li strong {
+      color: #fff;
+      font-size: 26px;
+      line-height: 1.2;
+      font-family: 'gilroy';
+      font-weight: normal;
+      display: block;
+      margin-top: 10px; }
+    .woo-is_checkout ul.woocommerce-thankyou-order-details.order_details li.total {
+      order: 10;
+      min-width: 210px; }
+
 .woo-is_checkout #payment {
   border-radius: 0;
   background-color: transparent;

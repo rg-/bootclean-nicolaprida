@@ -15,6 +15,53 @@ add_filter('wpbc/filter/woocommerce/config', function ($wpbc_woocommerce_config)
 
 },10,1); 
 
+
+add_filter('wpbc/body/class', function($class){
+	if( is_checkout()  ){
+		$class .= ' single-header ';
+	}
+	return $class;
+
+},10,1 ); 
+
+add_filter('wpbc/filter/layout/main-page-header/defaults',function($defaults){ 
+	if( is_checkout()  ){
+		$template_id = get_videos_layout_header_template();  
+		$defaults['template_id'] = $template_id; 
+	}
+	return $defaults;  
+},10,1);
+
+add_filter('WPBC_post_header_title_class', function($class){
+	if( is_wc_endpoint_url( 'order-received' ) && isset($_GET['key']) ){
+		$class = 'section-title text-center font-gilroysb';
+	}
+	return $class; 
+},10,1);
+
+add_filter( 'WPBC_post_header_title', function($_post_title, $title_tag, $title_class){
+	if( is_wc_endpoint_url( 'order-received' ) && isset($_GET['key']) ){  
+		$_post_title = '¡Gracias, tu solicitud ha sido recibida!';
+	}
+	return $_post_title; 
+},10, 3); 
+
+add_filter( 'laprida/single/page/entry-content/class', function($class){
+	if( is_wc_endpoint_url( 'order-received' ) && isset($_GET['key']) ){  
+		$class = 'gmb-1 entry-content';
+	}
+	return $class; 
+},10, 3); 
+
+
+add_filter( 'woocommerce_thankyou_order_received_text', function($text, $order){
+	if( is_wc_endpoint_url( 'order-received' ) && isset($_GET['key']) ){
+		$text = 'Tu pago está siendo procesado y está pendiente de activación <br><small>Revisa tu correo recibirás un email con las instrucciones de acceso.</small>';
+	}
+	return $text;
+},10,2 ); 
+
+
 add_filter('wpbc/filter/page/single/class',function($class){
 	if( is_checkout() ){
 		$class = ' woo-is_checkout ui-loader';
@@ -53,7 +100,7 @@ add_filter('laprida/single/page/actions',function($use){
 
 add_filter('WPBC_post_header_show', function($show){
 	if( is_checkout() ){
-		$show = false;
+		//$show = false;
 	}
 	return $show; 
 },10,1); 

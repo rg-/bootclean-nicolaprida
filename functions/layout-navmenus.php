@@ -34,7 +34,7 @@ add_filter('wpbc/filter/layout/main-navbar/defaults', function($args){
 
 	$logo = get_stylesheet_directory_uri().'/images/theme/logo-nico-laprida-white.png'; 
 	
-	$args['class'] = 'navbar navbar-expand-md  bg-transparent navbar-expand-aside collapse-right';
+	$args['class'] = 'navbar navbar-expand-md bg-transparent navbar-expand-aside collapse-right';
 	
 	$args['nav_attrs'] = ' data-affix-target="#main-content-wrap" data-affix-addclass="bg-primary" data-affix-removeclass="bg-transparent"';	
 

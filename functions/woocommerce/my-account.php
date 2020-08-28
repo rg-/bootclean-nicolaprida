@@ -21,6 +21,13 @@ add_filter('wpbc/filter/woocommerce/config', function ($wpbc_woocommerce_config)
 	
 	return $wpbc_woocommerce_config;
 
+},10,1); 
+
+add_filter('layout_general_body_background',function($use){
+	if( is_account_page() && is_user_logged_in() ){
+		$use = false;
+	}
+	return $use; 
 },10,1);
 
 add_action('wpbc/layout/start', function(){   
@@ -34,6 +41,22 @@ add_action('wpbc/layout/start', function(){
 	} 
 
 },0);  
+
+add_filter('wpbc/body/class', function($class){
+	if( is_account_page() && is_user_logged_in() ){
+		$class .= ' single-header ';
+	}
+	return $class;
+
+},10,1 ); 
+
+add_filter('wpbc/filter/layout/main-page-header/defaults',function($defaults){ 
+	if( is_account_page() && is_user_logged_in() ){
+		$template_id = get_videos_layout_header_template();  
+		$defaults['template_id'] = $template_id; 
+	}
+	return $defaults;  
+},10,1);
 
 /* 
 

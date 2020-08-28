@@ -43,7 +43,7 @@ function child_woocommerce_config($wpbc_woocommerce_config){
 add_filter('wpbc/body/class', function ($class){
 	$post_type = get_post_type();
 	if( is_shop() || is_checkout() || $post_type == 'product' ){ 
-		$class .= ' single-header ';
+		// $class .= ' single-header bg-success ';
 	} 
 	return $class;
 }, 10,1 );  
@@ -98,7 +98,7 @@ add_filter('wpbc/filter/layout/secondary-content/post_id',function($post_id){
 },10,1);
 
 add_filter('wpbc/filter/layout/main-page-header/defaults',function($defaults){ 
-	if( is_shop() || is_cart() || is_checkout() || is_singular('product') ){
+	if(is_singular('product') ){
 		$template_id = get_videos_layout_header_template();  
 		$defaults['template_id'] = $template_id;
 	}

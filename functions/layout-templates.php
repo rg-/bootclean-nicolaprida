@@ -15,7 +15,7 @@ function custom_posts_body_class($class){
 
 	global $post;
 	if( WPBC_if_has_page_header($post->ID) && WPBC_if_has_main_navbar($post->ID) ){
-		$class .= ' single-header bg-success';
+		$class .= ' single-header ';
 	}
 
 	return $class;

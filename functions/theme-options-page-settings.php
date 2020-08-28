@@ -119,7 +119,9 @@ function WPBC_group_builder__layout__general($fields){
 
 add_filter('wpbc/body/class',function($class){
 
-	if( WPBC_get_field('layout_general_body_background') ){
+	$use_body_background = apply_filters('layout_general_body_background',1);
+
+	if( $use_body_background && WPBC_get_field('layout_general_body_background') ){
 		$layout_general_body_background = WPBC_get_field('layout_general_body_background');
 		$class .= ' image-cover attachment-fixed ';
 	}
@@ -128,13 +130,15 @@ add_filter('wpbc/body/class',function($class){
 
 },10,1); 
 
-add_filter('wpbc/body/data',function($data){
+add_filter('wpbc/body/data','WPBC_layout_general_body_background',10,1); 
 
-	if( WPBC_get_field('layout_general_body_background') ){
+function WPBC_layout_general_body_background($data){
+	$use_body_background = apply_filters('layout_general_body_background',1);
+	if( $use_body_background && WPBC_get_field('layout_general_body_background') ){
 		$layout_general_body_background = WPBC_get_field('layout_general_body_background');
 		$data .= ' style="background-image:url('.$layout_general_body_background['url'].');" ';
 	}
 
 	return $data;
 
-},10,1); 
+}

@@ -42,9 +42,13 @@ function WPBC_detect_user_status(){
 
 
 add_filter('wpbc/filter/layout/main_pageheader/end', function($out){ 
-	$out .= do_shortcode('[WPBC_get_template name="parts/fixed-top-messages"]'); 
+	//$out .= do_shortcode('[WPBC_get_template name="parts/fixed-top-messages"]'); 
 	return $out;
 },10,1);  
+
+add_action('wpbc/layout/start',function(){
+	echo do_shortcode('[WPBC_get_template name="parts/fixed-top-messages"]');
+},31);
 
 
 /*
@@ -61,7 +65,7 @@ add_filter('wpbc/filter/layout/main-navbar/defaults', function($args){
 	}
 
 	if( is_shop() || is_account_page() ){ 
-		$args['affix_defaults']['simulate'] = true;
+		//$args['affix_defaults']['simulate'] = true;
 	}
 
 	$landing_page = WPBC_get_field('landing_page','options');

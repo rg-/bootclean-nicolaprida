@@ -5,9 +5,22 @@
 	".wpbc-woo" added by 'wpbc/body/class' filter, see woocommerce/layout
 
 */
+
+.wpbc-woo {
+	.blockUI.blockOverlay{
+		background-color:rgba(#000,.6)!important;
+		background-image: url('../images/loaders/tail-spin.svg')!important;
+		background-repeat:no-repeat!important;
+		background-position:center center!important;
+		background-size: $BC-body-loader-size!important; 
+	}
+}
+
 /* buttons general */
 
 .woo-form-title,
+.woocommerce-order-details h2,
+.woocommerce-customer-details h2,
 .woocommerce-billing-fields h3,
 .woocommerce-additional-fields h3,
 .woocommerce-MyAccount-content h2{
@@ -15,6 +28,9 @@
 	margin-bottom: 28px!important;
 	font-weight: normal;
 	font-family: "gilroy";
+	@include breakpoint(md){
+		font-size: 2.5rem;
+	}
 } 
 
 
@@ -70,7 +86,7 @@
 		border-color: $success;
 		background-color: $success;
 		padding: 4px 10px!important;
-		font-size: 14px;
+		font-size: 16px;
 		text-decoration: none;
 		&:hover{
   		color: $primary;
@@ -217,9 +233,7 @@
 
 }
 
-.woo-account-panels{
-	background-color:rgba(#000,.7);
-	padding:34px;
+.woo-account-panels{ 
 
 	.woocommerce-MyAccount-navigation {
 
@@ -235,10 +249,10 @@
 				margin:0;
 				a{
 					font-family: "gilroyl";
-					padding: 10px 15px;
+					padding: 15px 15px!important;
 			    display: block;
 			    font-weight: 400;
-			    font-size: 14px;
+			    font-size: 16px;
 				}
 				&.is-active{
 					a{
@@ -286,10 +300,12 @@
 .woocommerce .woocommerce-Address address,
 .woocommerce .woocommerce-Addresses address,
 .woocommerce .woocommerce-customer-details address{
-	background: $secondary;
-  color: $primary;
-  padding: 18px 28px 22px 28px;
+	background: transparent;
+  color: $secondary;
+  padding: 18px 0 22px 0;
   margin-bottom: 22px;
+	font-size: 18px;
+	line-height: 34px;
   @include border-radius(0);
 } 
 /* myaccount END */ 
@@ -321,15 +337,18 @@
 /* tables */
 
 .woocommerce table.shop_table{
-	background: $secondary;
-	color: $primary;
+	background: transparent;
+	color: $secondary;
+	border-collapse: collapse;
+	margin-bottom: 54px;
 	a{
-		color: $primary;
+		color: $secondary;
 		text-decoration: underline;
 	}
 	@include border-radius(0);
 	td,th{
-		padding: 6px 14px!important;
+		padding: 10px 0!important;
+		border-bottom:1px solid rgba($secondary,.6);
 	}
 }  
 
@@ -340,7 +359,45 @@
 	checkout
 
 */
+.woo-is_checkout{
 
+	.woocommerce-thankyou-order-received{
+		text-align: center;
+		font-size: 21px;
+		font-family: 'gilroysb';
+		small{
+			font-family: 'gilroy';
+		}
+	}
+
+	ul.woocommerce-thankyou-order-details.order_details{
+		margin: 50px 0 30px 0!important;
+		padding: 0; 
+		display:flex;
+		li{
+			font-size: 18px;
+			line-height: 30px;
+			float: none;
+			margin-right:0;
+			border:0;
+			color:#6c757d;
+			strong{
+				color:#fff;
+				font-size: 26px;
+		    line-height: 1.2;
+		    font-family: 'gilroy';
+		    font-weight: normal;
+		    display: block;
+		    margin-top: 10px;
+			}
+			&.total{
+				order:10;
+				min-width: 210px;
+			}
+		}
+	}
+
+}
 .woo-is_checkout #payment {
     border-radius: 0;
     background-color: transparent;
