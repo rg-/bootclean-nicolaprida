@@ -47,8 +47,11 @@ add_filter('wpbc/filter/layout/start/defaults', function($args){
 
 add_action('wpbc/layout/start', 'theme_custom_search_form',39);
 function theme_custom_search_form(){
-	if(!is_front_page()){ 
+	$landing_page_id = WPBC_get_field('landing_page','options'); 
+	if(!is_page($landing_page_id) ){ 
 		echo '<div class="container d-lg-none"><div class="row"><div class="col-12 gmb-2">'.WPBC_my_search_form( '' ).'</div></div></div>'; 
+	}else{
+
 	}
 }
 

@@ -24,7 +24,7 @@
 			<div class="col-md-6 text-center text-md-right gpr-md-3">
 
 				<p>
-				  <a href="#" class="btn btn-outline-white btn-blg">¡SUMATE AHORA!</a>
+				  <a href="#planes" class="btn btn-outline-white btn-blg scroll-to">¡SUMATE AHORA!</a>
 				</p>
 
 			</div>

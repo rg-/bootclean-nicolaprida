@@ -7278,21 +7278,21 @@ body.preloading #body-loader {
   .image-cover.attachment-fixed {
     background-attachment: fixed; }
   .image-cover.pos-cr {
-    background-position: center right; }
+    background-position: center right !important; }
   .image-cover.pos-cl {
-    background-position: center left; }
+    background-position: center left !important; }
   .image-cover.pos-tr {
-    background-position: top right; }
+    background-position: top right !important; }
   .image-cover.pos-tr {
-    background-position: top left; }
+    background-position: top left !important; }
   .image-cover.pos-tc {
-    background-position: top center; }
+    background-position: top center !important; }
   .image-cover.pos-br {
-    background-position: bottom right; }
+    background-position: bottom right !important; }
   .image-cover.pos-bl {
-    background-position: bottom left; }
+    background-position: bottom left !important; }
   .image-cover.pos-bc {
-    background-position: bottom center; }
+    background-position: bottom center !important; }
 
 html.no-touchevents .post-share.animate-buttons .share_buttons {
   transition: all 0.2s ease-in-out;
@@ -7556,14 +7556,21 @@ html, body {
   height: 100%; }
 
 .fixed-top-messages {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1040;
+  position: relative;
   background: transparent;
-  color: #fff;
-  font-size: 14px; }
+  color: #fff; }
+  .fixed-top-messages .bg-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+    opacity: 0.4;
+    z-index: -1; }
+  .fixed-top-messages a.link {
+    text-decoration: underline; }
 
 .pagination {
   flex-wrap: wrap; }
@@ -8017,7 +8024,8 @@ html, body {
     display: none; }
 
 b, strong {
-  font-weight: bold; }
+  font-weight: bold;
+  font-family: 'gilroysb'; }
 
 .font-gilroyem {
   font-family: "gilroy" !important; }
@@ -8105,6 +8113,15 @@ ul.list-dot {
   ul.list-dot li {
     margin: 17px 0; }
 
+.ui-slider-rows .embed-responsive-16by9::before {
+  padding-top: 65.25%; }
+
+@media (min-width: 768px) {
+  .wpbc-full-aside-inline-image {
+    height: 100% !important;
+    width: auto;
+    max-width: none !important; } }
+
 @media (max-width: 991.98px) {
   .landing-page-header .lead {
     font-size: 18px; } }
@@ -8139,7 +8156,7 @@ ul.list-dot {
   font-size: 16px; }
   .ui-title-spanned b {
     font-size: 28px;
-    font-family: 'gilroyeb';
+    font-family: 'gilroysb';
     display: block;
     line-height: 1; }
 
@@ -8198,10 +8215,14 @@ ul.list-dot {
   padding: 14px 20px;
   margin-bottom: -1px; }
 .piramide-de-performance .btn-last {
-  padding-left: 70px;
-  padding-right: 70px;
+  padding-left: 60px;
+  padding-right: 60px;
   max-width: 100%;
   font-family: 'gilroysb'; }
+  @media (min-width: 576px) {
+    .piramide-de-performance .btn-last {
+      padding-left: 70px;
+      padding-right: 70px; } }
 .piramide-de-performance .text-light {
   -webkit-opacity: 0.6;
   -moz-opacity: 0.6;

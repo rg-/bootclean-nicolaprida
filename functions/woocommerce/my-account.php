@@ -162,17 +162,6 @@ add_action('woocommerce_account_dashboard', function(){
 	?>
 	<div class="woo-account-panel-dashboard">
 
-		<?php
-		$subscription_active = wcs_user_has_subscription( $user_id, '', 'active' );
-		if($subscription_active){
-
-		}else{
-			?>
-			<p class="bg-danger gp-2">ATENCIÓN: No tienes una subscripción activa.</p>
-			<?php
-		}
-		?>
-
 		<div class="d-flex gmb-1">
 
 			<div class="woo-account-panel-dashboard-profile_pic">

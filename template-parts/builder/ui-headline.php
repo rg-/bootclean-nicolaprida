@@ -19,7 +19,7 @@ if(empty($section['section_visible'])){
 		$style = 'background-image: url([WPBC_get_attachment_image_src id='. $section_background_image['id'] .']);';
 	}
 ?>
-<div id="<?php echo $section['section_id']; ?>" class="image-cover gpy-2 gpy-md-6 bg-<?php echo $section['section_style_background']; ?> text-<?php echo $section['section_style_color']; ?>" style="<?php echo $style; ?>">
+<div id="<?php echo $section['section_id']; ?>" class="image-cover gpy-3 gpy-md-6 bg-<?php echo $section['section_style_background']; ?> text-<?php echo $section['section_style_color']; ?>" style="<?php echo $style; ?>">
 
 	<?php if(!empty( $section['section_title'] )){ ?>
 	<div class="container" data-is-inview="detect">

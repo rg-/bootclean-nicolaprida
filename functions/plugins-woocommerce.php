@@ -66,9 +66,13 @@ function WPBC_woo_currency_symbol( $currency_symbol, $currency ) {
      return $currency_symbol;
 }
 
+include('woocommerce/enqueue.php');
+
 include('woocommerce/acf-woo-subscription.php');
 include('woocommerce/layout.php');
 include('woocommerce/layout-navmenus.php');
 include('woocommerce/my-account.php');
 include('woocommerce/cart.php');
 include('woocommerce/checkout.php'); 
+
+include('woocommerce/user-conditionals.php');

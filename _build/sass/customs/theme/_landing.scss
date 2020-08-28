@@ -1,4 +1,19 @@
 
+.ui-slider-rows{
+	.embed-responsive-16by9::before {
+	    padding-top: 65.25%;
+	}
+}
+
+.wpbc-full-aside-inline-image{
+	
+  @include breakpoint(md){
+  	height: 100%!important;
+	  width: auto;
+	  max-width: none!important;
+  }
+}
+
 .landing-page-header{
 	.lead{
 		@include breakpoint-max(md){
@@ -66,7 +81,7 @@
 	font-size: 16px;
 	b{
 		font-size: 28px;
-		font-family: 'gilroyeb';
+		font-family: 'gilroysb';
 		display: block;
 		line-height: 1;
 	}

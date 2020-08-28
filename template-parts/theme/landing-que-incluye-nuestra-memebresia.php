@@ -31,10 +31,10 @@
 			<div class="col-md-6">
 
 				<ul class="list-tick">
-					<li>Programas de entrenamiento para principiantes y avanzados</li>
-					<li>Programas de entrenamiento de fuerza General y Específica para distintas disciplinas deportivas</li>
-					<li>Planes para mejorar la calidad de tus movimientos (sentadillas, peso muerto, etc.)</li>
-					<li>Videos teóricos con la técnica paso a paso de cada ejercicio</li>
+					<li><b>Programas de entrenamiento</b> para <b>principiantes y avanzados</b></li>
+					<li>Programas de entrenamiento de <b>fuerza General y Específica</b> para distintas <b>disciplinas deportivas</b></li>
+					<li>Planes para <b>mejorar la calidad de tus movimientos</b> (sentadillas, peso muerto, etc.)</li>
+					<li>Videos teóricos con la <b>técnica paso a paso de cada ejercicio</b></li>
 				</ul>
 
 			</div>
@@ -42,9 +42,9 @@
 			<div class="col-md-6">
 
 				<ul class="list-tick">
-					<li>Biblioteca de videos de fuerza, movilidad, estabilidad, liberación miofascial, recovery, Dynamic Neuromuscular Stabilization, etc. </li>
-					<li>Autoevaluaciones funcionales</li>
-					<li>Videos instructivos con métodos actuales para trabajar tus sistemas energéticos</li>
+					<li><b>Biblioteca de videos</b> de fuerza, movilidad, estabilidad, liberación miofascial, recovery, Dynamic Neuromuscular Stabilization, etc. </li>
+					<li><b>Autoevaluaciones funcionales</b></li>
+					<li><b>Videos instructivos</b> con métodos actuales para trabajar tus <b>sistemas energéticos</b></li>
 
 					<li class="no-icon gmt-5">
 						<a href="#planes" class="btn btn-white btn-lg scroll-to">Ver Planes de Membresía</a>

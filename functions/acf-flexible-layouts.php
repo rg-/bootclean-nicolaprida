@@ -1,5 +1,6 @@
-<?php
+<?php 
 
+/* Add a reusable field to use on some flexible layouts settings */
 add_filter('WPBC_acf_reusables_fields', function($fields){ 
 		$fields[] = array (
 			'key' => 'field_reusable_visible_conditional',
@@ -24,6 +25,8 @@ add_filter('WPBC_acf_reusables_fields', function($fields){
 
 	},20,1);
 
+/* Add the reusable into "template_part_row" layout */
+
 add_filter('WPBC_group_builder__layout_template_part_row_clone', function($clone){
 	//$clone[8] = 'field_reusable_visible_conditional';
 	$clone = array(
@@ -34,10 +37,28 @@ add_filter('WPBC_group_builder__layout_template_part_row_clone', function($clone
 		4 => 'key__r_tab__settings',
 		5 => 'key__r_builder_classes_group',
 		6 => 'key__r_tab__advanced',
-		7 => 'field_reusable_visible_conditional',  
+		7 => 'field_reusable_visible_conditional',  // replaced (original key__r_wpbc__advanced_group_inview)
 	);
   return $clone;
 },10,1);
+
+/* Add the reusable into "html_row" layout */
+
+add_filter('WPBC_group_builder__layout_html_row_clone', function($clone){
+	//$clone[8] = 'field_reusable_visible_conditional';
+	$clone = array(
+		0 => 'key__r_tab__content',
+		1 => 'key__r_html_code',
+		2 => 'key__r_tab__settings',
+		3 => 'key__r_builder_classes_group',
+		4 => 'key__r_tab__advanced', // added
+		5 => 'field_reusable_visible_conditional',  // added
+	);
+  return $clone;
+},10,1);
+
+
+/* All flexible layouts should be here listed, also they should have the same name file for the back and font-end */
 
 function _wpbc_get_flexible_layouts(){
 	$layouts = array( 
@@ -91,6 +112,33 @@ function WPBC_acf_get_flexible_content_layout($layout_prefix, $post_id){
 		} 
 
 		$section_background_image = $section_options[$layout_prefix.'__section_options_background_image'];
+ 
+		$section_visible_conditional = get_sub_field($sub_prefix.'section_visible_conditional', $post_id);
+
+		$section_visible_subscriber = get_sub_field($sub_prefix.'section_visible_subscriber', $post_id);
+
+		$user_status = WPBC_detect_user_status();
+		if($user_status!='administrator'){
+
+			if($section_visible_conditional){ 
+				// $section_options_visible = apply_filters('wpbc/flexible/layouts/section_visible'); 
+				if( is_user_logged_in() ){
+					$user_id = get_current_user_id();
+					$section_options_visible = true; // that is hidde it
+				}
+
+			}
+			if($section_visible_subscriber){ 
+				if( is_user_logged_in() ){
+					$user_id = get_current_user_id();
+					$subscription_active = wcs_user_has_subscription( $user_id, '', 'active' ); 
+					if( $user_status == 'customer_on_hold' ){
+						$section_options_visible = true; // that is hidde it
+					}
+				}
+			}
+
+		}
 
 	return array(
 		'section_title' => $section_title,
@@ -100,6 +148,7 @@ function WPBC_acf_get_flexible_content_layout($layout_prefix, $post_id){
 		'section_style_color' => $section_options_style_color,
 		'section_background_image' => $section_background_image,
 		'section_visible' => $section_options_visible,
+		'section_visible_conditional' => $section_visible_conditional,
 	);
 } 
 
@@ -244,6 +293,16 @@ function WPBC_acf_make_flexible_content_layout($args=array(), $layouts=array()){
 								'default_value' => 0, 
 								'message' => '',
 								'width' => '20%', 
+							)
+						); 
+
+				$sub_fields[] = WPBC_acf_make_true_false_field(
+							array(
+								'name' => $layout_name.'__section_visible_subscriber',
+								'label'=>'Ocultar para Subscriptores Activos',  
+								'default_value' => 0, 
+								'message' => '',
+								'width' => '40%', 
 							)
 						); 
 

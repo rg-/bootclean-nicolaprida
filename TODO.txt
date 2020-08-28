@@ -1,4 +1,9 @@
 
+- subscripciones ver
+	
+	- Inventario - activar para que solo se pueda comprar uno producto por cart
+	- Avanzado - limitar a UNA subscripcion por usuario
+
 
 - landing:
 

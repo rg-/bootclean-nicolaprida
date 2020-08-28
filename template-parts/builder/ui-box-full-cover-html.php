@@ -24,10 +24,12 @@ if(empty($section['section_visible'])){
 
 		$content_side = $content_options_side;
 		if($content_side == 'right'){
-			$content_class = 'gpx-2 gpr-lg-0 gpl-lg-3 gpt-4 gpb-4 text-center text-md-left';
+			$cover_pos = 'pos-cl';
+			$content_class = 'gpx-md-2 gpr-lg-0 gpl-lg-3 gpt-2 gpt-md-6 gpb-2 gpb-md-4 text-center text-md-left';
 		}
 		if($content_side == 'left'){
-			$content_class = 'gpx-2 gpr-lg-3 gpl-lg-0 gpt-4 gpb-4 text-center text-md-left';
+			$cover_pos = 'pos-cl';
+			$content_class = 'gpx-md-2 gpr-lg-3 gpl-lg-0 gpt-2 gpt-md-6 gpb-2 gpb-md-4 text-center text-md-left';
 		}
 
 		$content_images = get_sub_field('field_'.$layout_prefix.'__content_images', $post_id);
@@ -35,7 +37,7 @@ if(empty($section['section_visible'])){
 
 	<div class="wpbc-full-aside-cols content-<?php echo $content_side; ?> break-md">
 
-		<div class="col-12 col-fullside">
+		<div class="col-12 p-0 col-fullside">
 
 			<?php 
 			if(!empty($content_images)){
@@ -52,7 +54,7 @@ if(empty($section['section_visible'])){
 
 			?>
 			
-			<div class="embed-responsive embed-responsive-21by9">
+			<div class="embed-responsive embed-responsive-1by1">
 				<div class="embed-responsive-item">
 
 					<div class="theme-slick-slider type-background" data-slick='<?php echo $slick; ?>'>
@@ -64,7 +66,7 @@ if(empty($section['section_visible'])){
 									$img_hi = "[WPBC_get_attachment_image_src id='".$id."']";
 									$img_low = "[WPBC_get_attachment_image_src id='".$id."' size='medium']";
 									?>
-									<div class="item-container image-cover" data-lazybackground-src="<?php echo $img_hi; ?>" style="background-image: url(<?php echo $img_low; ?>);">
+									<div class="item-container image-cover <?php echo $cover_pos; ?>" data-lazybackground-src="<?php echo $img_hi; ?>" style="background-image: url(<?php echo $img_low; ?>);">
 									</div>
 							</div>
 							<?php } ?>

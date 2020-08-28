@@ -136,11 +136,17 @@ add_action('woocommerce_checkout_after_customer_details', function(){
 				<?php
 			 	woocommerce_order_review();
 				?>
+				<?php
+				$landing_page_id = WPBC_get_field('landing_page','options');
+				?>
+				<a class="" data-woo="empty-cart" data-loading-target=".woo-is_checkout" href="<?php echo get_the_permalink($landing_page_id); ?>"><i class="fa fa-angle-left"></i> Cambiar Plan</a>
 			</div>
 		</div>
 	</div>
 </div><!-- #affix-checkout-area end -->
 
 	<?php
+
+	WPBC_get_template_part('parts/empty_cart_redirecting');
 
 });

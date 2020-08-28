@@ -9,14 +9,24 @@ $font_semi_bold: 'gilroysb';
 
 
 .fixed-top-messages{
-	position: fixed;
-	top:0;
-	left:0;
-	right:0;
-	z-index: 1040;
+	position: relative;  
 	background:transparent;
-	color:#fff;
-	font-size: 14px;
+	color:#fff;  
+
+	.bg-message{
+		position:absolute;
+		top:0;
+		left: 0;
+		right: 0;
+		bottom:0;
+		@include opacity(.4);
+		z-index: -1;
+	}
+
+	a.link{
+		text-decoration: underline;
+	}
+
 }
 
 
@@ -69,10 +79,14 @@ $font_semi_bold: 'gilroysb';
 		margin-bottom: -1px;
 	}
 	.btn-last{
-		padding-left: 70px;
-		padding-right: 70px;
+		padding-left: 60px;
+		padding-right: 60px;
 		max-width: 100%;
 		font-family: 'gilroysb';
+		@include breakpoint(sm){
+			padding-left: 70px;
+			padding-right: 70px;
+		}
 	}
 	.text-light{
 		@include opacity(.6);

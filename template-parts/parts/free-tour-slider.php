@@ -10,7 +10,18 @@
 			'autoplay' => true,
 			'autoplaySpeed' => 6200,  
 			'slidesToShow' => 3,
-			'slidesToScroll' => 1
+			'slidesToScroll' => 1,
+
+			'responsive' => array( 
+				array(
+					'breakpoint'=> 992,
+					'settings' => array(
+						'slidesToShow' => 1,
+						'slidesToScroll' => 1,
+					)
+				),
+			) 
+
 		);
 		$slick = json_encode($slick);
 
