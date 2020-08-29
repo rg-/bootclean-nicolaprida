@@ -129,6 +129,7 @@ add_filter('WPBC_post_header_show', function($show){
 
 	*/
 	remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+	
 	// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
 	remove_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 ); 
@@ -140,6 +141,7 @@ add_filter('WPBC_post_header_show', function($show){
 		<div class="col2-set">
 			<div class="col-1">
 				<div class="woo-custom-checkout-login-form">
+					
 					<?php woocommerce_checkout_login_form(); ?>
 				</div>
 			</div>
