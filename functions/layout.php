@@ -17,9 +17,9 @@ function custom_body_data($out){
 	global $post;
 	$layout_main_navbar_fixed_lol = WPBC_get_field('layout_main_navbar_fixed_lol', $post->ID); 
 	if($layout_main_navbar_fixed_lol){
-		$out = ' data-scroll-offset="120" data-scroll-time-1="100" data-scroll-ease-1="easeOutBack" data-loader-delay="1000"'.$out;
+		$out = ' data-scroll-offset="120" data-scroll-time-1="1000" data-scroll-ease-1="easeOutBack" data-loader-delay="1000"'.$out;
 	}else{
-		$out = ' data-scroll-offset="63" data-scroll-time-1="100" data-scroll-ease-1="easeOutBack" data-loader-delay="1000"'.$out;
+		$out = ' data-scroll-offset="63" data-scroll-time-1="1000" data-scroll-ease-1="easeOutBack" data-loader-delay="1000"'.$out;
 	}
 	
 	return $out;

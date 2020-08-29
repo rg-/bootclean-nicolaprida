@@ -184,6 +184,6 @@ function btn_lg_scroll_FX($atts, $content = null, $tag){
 		'href' => '#',
 	), $atts));
 
-	return '<a href="'.$href.'" class="btn btn-lg btn-'.$color.'">'.$label.'</a>';
+	return '<a href="'.$href.'" class="btn btn-lg btn-'.$color.' scroll-to">'.$label.'</a>';
 }
 add_shortcode('btn_lg_scroll','btn_lg_scroll_FX');  

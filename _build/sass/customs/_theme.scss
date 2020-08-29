@@ -19,8 +19,13 @@ $font_semi_bold: 'gilroysb';
 		left: 0;
 		right: 0;
 		bottom:0;
-		@include opacity(.4);
+		@include opacity(.8);
 		z-index: -1;
+
+		&.bg-danger{
+			background-color:#654141!important;
+		}
+
 	}
 
 	a.link{
@@ -639,6 +644,11 @@ input:-webkit-autofill:active {
 } 
 
 .testimonios-slider{
+
+	.slick-slide .item{
+		position:relative;
+	}
+
 	.slick-prev, .slick-next{
 
 		background: #000;
@@ -659,6 +669,23 @@ input:-webkit-autofill:active {
 		}
 		&.slick-next {
 			right: 0;
+		}
+
+	}
+}
+
+.testimonios-slider{
+	@include breakpoint-max(sm){
+
+		.ui-slider-testimonios-thumb{
+			position:absolute;
+			top:0;
+			right: 0;
+			z-index: 10;
+		} 
+
+		.section-title, .lead{
+			padding-right:33.333333%;
 		}
 
 	}

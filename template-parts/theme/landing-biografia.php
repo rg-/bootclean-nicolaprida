@@ -12,7 +12,7 @@
 
 	<div class="wpbc-full-aside-cols content-left break-md">
 
-		<div class="col-md-6 col-fullside">
+		<div class="col-md-6 p-0 col-fullside">
 
 			<?php 
 
@@ -38,7 +38,7 @@
 
 			?>
 			
-			<div class="embed-responsive embed-responsive-21by9">
+			<div class="embed-responsive embed-responsive-4by3">
 				<div class="embed-responsive-item">
 
 					<div class="theme-slick-slider type-background" data-slick='<?php echo $slick; ?>'>

@@ -146,6 +146,7 @@ add_filter('WPBC_post_header_show', function($show){
 		</div>
 		<?php 
 	},10,1);
+
 	add_action('woocommerce_after_checkout_form',function($checkout){
 		?>
 		</div>
@@ -158,6 +159,20 @@ add_filter('WPBC_post_header_show', function($show){
 	<div>
 	<?php 
 });
+
+add_action( 'woocommerce_after_checkout_validation', 'wpbc_checkout_validation_one_err', 9999, 2);
+ 
+function wpbc_checkout_validation_one_err( $fields, $errors ){ 
+	// if any validation errors
+	if( !empty( $errors->get_error_codes() ) ) { 
+		// remove all of them
+		foreach( $errors->get_error_codes() as $code ) {
+			$errors->remove( $code );
+		} 
+		// add our custom one
+		$errors->add( 'validation', 'Revisa los campos marcados en rojo para continuar.' ); 
+	} 
+}
 
 add_action('woocommerce_checkout_after_customer_details', function(){  
 

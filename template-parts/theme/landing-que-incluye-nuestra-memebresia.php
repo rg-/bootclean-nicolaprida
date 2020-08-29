@@ -26,7 +26,7 @@
 
 		</div>
 
-		<div class="row gpy-2">
+		<div class="row gpy-md-2">
 
 			<div class="col-md-6">
 

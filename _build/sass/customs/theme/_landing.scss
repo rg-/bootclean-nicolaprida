@@ -75,6 +75,22 @@
 		
 	}
 
+	@include breakpoint(md){
+		@include scale(1);
+		@include transition();
+		&:hover{
+			@include scale(1.06);
+		}
+
+		.btn {
+			&:hover{
+				border-color: #000!important;
+				background-color: #fff!important;
+				color:#000!important;
+			}
+		}
+	}
+
 }
 
 .ui-title-spanned{

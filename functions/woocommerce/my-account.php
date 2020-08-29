@@ -15,6 +15,10 @@ add_filter('wpbc/filter/woocommerce/config', function ($wpbc_woocommerce_config)
 
 	$class .= $class_cols.$class_nav.$class_content;
 
+	if( is_account_page() && !is_user_logged_in() ){
+		$class = '';
+	}
+
 	$wpbc_woocommerce_config['layout']['myaccount'] = array(
 		'class' => $class,
 	); 
@@ -209,7 +213,7 @@ add_action('woocommerce_account_dashboard', function(){
 		<ul>
 			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'orders' ) ); ?>">Pedidos <br><small>Ver tus órdenes y pedidos.</small></a></li>
 			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'subscriptions' ) ); ?>">Subscripciones <br><small>Ver el estado de tus subscripciones.</small></a></li>
-			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address' ) ); ?>">Direcciones <br><small>Administrar tus direcciones de Envío y Facturación</small></a></li>
+			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address' ) ); ?>">Direcciones <br><small>Administrar tu dirección de Facturación</small></a></li>
 			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-account' ) ); ?>">Detalles de la cuenta <br><small>Editar tus datos de usuario y cambiar tu contraseña.</small></a></li>
 		</ul>
 	</div>
@@ -222,7 +226,7 @@ add_action( 'woocommerce_account_content', 'WPBC_woocommerce_account_content', 0
 function WPBC_woocommerce_account_content(){
 
 	if( is_wc_endpoint_url( 'orders' ) ){
-		$text = 'Órdenes';
+		$text = 'Pedidos';
 	} 
 	if( is_wc_endpoint_url( 'edit-address' ) ){
 		$text = 'Direcciones';
