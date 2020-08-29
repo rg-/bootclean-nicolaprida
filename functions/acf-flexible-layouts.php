@@ -131,8 +131,9 @@ function WPBC_acf_get_flexible_content_layout($layout_prefix, $post_id){
 			if($section_visible_subscriber){ 
 				if( is_user_logged_in() ){
 					$user_id = get_current_user_id();
-					$subscription_active = wcs_user_has_subscription( $user_id, '', 'active' ); 
-					if( $user_status == 'customer_on_hold' ){
+					$subscription_active = wcs_user_has_subscription( $user_id, '', 'active' );
+					$subscription_expired = wcs_user_has_subscription( $user_id, '', 'expired' ); 
+					if( $user_status == 'customer_on_hold' && !$subscription_expired ){
 						$section_options_visible = true; // that is hidde it
 					}
 				}

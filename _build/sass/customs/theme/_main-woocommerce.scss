@@ -18,6 +18,7 @@
 
 /* buttons general */
 
+
 .woo-form-title,
 .woocommerce-order-details h2,
 .woocommerce-customer-details h2,
@@ -41,6 +42,7 @@
  
 .wpbc-woo .woocommerce{
 
+	.button.resubscribe,
 	a.edit,
 	.button[name="woocommerce_checkout_place_order"],
 	.button[name="save_address"],
@@ -52,6 +54,7 @@
 			padding: 10px 20px!important;
 		  line-height: 1.5;
 		  text-align: center;
+		  text-decoration: none;
 		  word-break: break-word;
 		  white-space: normal;
 		  color: $primary;
@@ -79,6 +82,7 @@
   	}
   }
  	
+ 	.button.resubscribe,
  	a.edit,
  	.addresses .title .edit,
 	.woocommerce-orders-table__cell a.button.view{

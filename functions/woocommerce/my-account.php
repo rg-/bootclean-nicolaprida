@@ -239,6 +239,21 @@ function WPBC_woocommerce_account_content(){
 	}
 
 	// woocommerce_breadcrumb();
+	$user_id = get_current_user_id();
+	$subscriptions = wcs_get_users_subscriptions($user_id); 
+	foreach ($subscriptions as $sub){ 
+		$end = $sub->get_date('end');
+		$end_display = esc_html( $sub->get_date_to_display( 'end' ) );
+		$current_time = date('Y-m-d H:i:s', time()); 
+		$str_end = strtotime($end);
+		$str_curr = strtotime($current_time);
+		$str_dif = $str_end - $str_curr;
+		if($str_dif>0 && $str_dif<6000){
+			//_print_code($str_dif);
+		} 
+	}
+	
+
 	?>
 	<?php if(!empty($text)){ ?>
 		<header class="woo-myaccount-header">

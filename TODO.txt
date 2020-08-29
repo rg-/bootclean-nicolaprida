@@ -5,6 +5,19 @@
 	- Avanzado - limitar a UNA subscripcion por usuario
 
 
+- checkout/orders
+
+	- sacar links a productos en las ordenes
+		https://www.businessbloomer.com/woocommerce-remove-cart-product-link-cart-page/
+
+	- ver de sacar form user fields no necesarios
+		https://www.businessbloomer.com/woocommerce-hide-checkout-billing-fields-if-virtual-product-cart/
+
+		https://www.businessbloomer.com/woocommerce-deny-checkout-user-pending-orders/
+		https://www.businessbloomer.com/woocommerce-display-save-wp-user-field-e-g-user_url-checkout/
+		https://www.businessbloomer.com/woocommerce-disable-postcodezip-validation-checkout/
+		https://www.businessbloomer.com/woocommerce-remove-order-notes-checkout-page/
+
 - landing:
 
 		- scroll offset 0 al no haber mainnav

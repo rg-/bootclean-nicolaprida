@@ -9,6 +9,11 @@
 	$landing_page_id = WPBC_get_field('landing_page','options'); 
 	$landing_page = get_permalink( $landing_page_id );  
 
+	$woocommerce_myaccount_page_id = get_option('woocommerce_myaccount_page_id');  
+	$myaccount_page = get_permalink( $woocommerce_myaccount_page_id );  
+	$woocommerce_checkout_page_id = get_option('woocommerce_checkout_page_id');  
+	$checkout_page = get_permalink( $woocommerce_checkout_page_id ); 
+
 	$current_user = wp_get_current_user();
 	$user_id = get_current_user_id();
 	$display_name = esc_html( $current_user->display_name );
@@ -23,31 +28,45 @@
 
 	if($user_status != 'administrator'){ 
 
-		if(!$subscription_active && !$subscription_on_hold){
-			$msg .= 'Tu subscripción está inactiva.';
+		if(!$subscription_active && !$subscription_on_hold && !$subscription_expired){
+			$msg .= ' Tu subscripción está inactiva.';
 			if(!is_page($landing_page_id)){
 				$msg .= ' Ir al <a class="link" href="'.$landing_page.'">Comprar</a>';
 			}
 		} elseif ($subscription_canceled){ // NO NEED
 			// $msg .= 'Tu subscripción está cancelada.';
 		} elseif ($subscription_on_hold){
-			$msg .= 'Tu subscripción está pendiente de activación.';
+			$msg .= ' Tu subscripción está pendiente de activación.';
 			if(!is_page($landing_page_id)){
 				$msg .= ' Tienes acceso a <a class="link" href="'.$landing_page.'">Free Tour</a>';
 			}
-		} elseif($subscription_expired){
-			$msg .= 'Tu subscripción está expirada.';
+		} elseif($subscription_expired && !$subscription_active){
+			$msg .= ' Tu subscripción está expirada. Puedes <a class="link" href="'.$landing_page.'">Comprar</a> otra o Resubscribirte en <a class="link" href="'.$myaccount_page.'">Mi Subscripción</a>.';
 		}else{
-
+			 
 		}
+
+		$subscriptions = wcs_get_users_subscriptions($user_id);
+		if(!empty($subscriptions)){
+			foreach ($subscriptions as $sub){ 
+				$end = $sub->get_date('end');
+				$end_display = esc_html( $sub->get_date_to_display( 'end' ) );
+				$current_time = date('Y-m-d H:i:s', time()); 
+				$str_end = strtotime($end);
+				$str_curr = strtotime($current_time);
+				$str_dif = $str_end - $str_curr;
+				if($str_dif>0 && $str_dif<6000){
+					//_print_code($str_dif);
+					$msg .= ' Tu subscripción está por expirar, '.$end_display;
+				} 
+			}
+		} 
+		
 
 	}
 	
 	
-	$woocommerce_myaccount_page_id = get_option('woocommerce_myaccount_page_id');  
-	$myaccount_page = get_permalink( $woocommerce_myaccount_page_id );  
-	$woocommerce_checkout_page_id = get_option('woocommerce_checkout_page_id');  
-	$checkout_page = get_permalink( $woocommerce_checkout_page_id );  
+	 
 
 	global $woocommerce;
 
@@ -67,7 +86,7 @@
 
 			<p class="d-none user_status"><?php echo $user_status; ?></p>
 
-			<p class="m-0"><?php echo $msg; ?></p>
+			<p class="m-0 text-center"><?php echo $msg; ?></p>
 
 		</div>
 

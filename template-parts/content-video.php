@@ -6,14 +6,14 @@
 	$featured_img_hi = get_the_post_thumbnail_url( get_the_ID(),'full');
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class($post_class); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class($post_class); ?> data-is-inview="detect">
 
 	<div class="post-favorite-absolute">[favorite-post-btn post_id="<?php echo get_the_ID(); ?>"]</div>
 
 	<a href="<?php echo esc_url( get_permalink() ); ?>" class="d-block">
 		<div class="hover_effect">
 			<div class="embed-responsive embed-responsive-4by3">
-				<div class="embed-responsive-item image-cover" style="background-image: url(<?php echo $featured_img_hi; ?>); ">
+				<div class="embed-responsive-item image-cover" data-is-inview-lazybackground="<?php echo $featured_img_hi; ?>" style="background-image: url(<?php echo $featured_img_low; ?>); ">
 				</div>
 			</div>
 			<span class="btn btn-more"><img src="[WPBC_get_stylesheet_directory_uri]/images/theme/icon-play.png" width="60" alt=" "/></span>
