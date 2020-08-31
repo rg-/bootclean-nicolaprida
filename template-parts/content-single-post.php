@@ -48,7 +48,7 @@
 			<article id="post-<?php the_ID(); ?>" <?php post_class($post_class); ?>>
 				<a href="<?php echo esc_url( get_permalink($post_id) ); ?>" class="d-block hover_effect">
 					<div class="embed-responsive embed-responsive-4by3">
-						<div class="embed-responsive-item image-cover" data-lazybackground-src="<?php echo $featured_img_hi; ?>" style="background-image: url(<?php echo $featured_img_low; ?>); ">
+						<div class="embed-responsive-item image-cover" style="background-image: url(<?php echo $featured_img_hi; ?>); ">
 						</div>
 					</div>
 					<span class="btn btn-more sm"><img src="[WPBC_get_stylesheet_directory_uri]/images/theme/icon-play.png" width="60" alt=" "/></span>
