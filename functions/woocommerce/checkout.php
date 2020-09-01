@@ -209,8 +209,6 @@ add_action('woocommerce_checkout_after_customer_details', function(){
 	</div>
 </div><!-- #affix-checkout-area end -->
 
-	<?php
-
-	WPBC_get_template_part('parts/empty_cart_redirecting');
+	<?php 
 
 });

@@ -8333,8 +8333,11 @@ ul.list-dot {
   -moz-opacity: 0.6;
   opacity: 0.6; }
 
+a:focus, a:active,
 button:focus,
-.btn:focus {
+button:active,
+.btn:focus,
+.btn:active {
   box-shadow: none;
   outline: none; }
 

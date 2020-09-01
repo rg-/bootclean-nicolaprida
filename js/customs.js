@@ -148,10 +148,28 @@
 		var modal = $( this );  
 
 		if($(e.relatedTarget).attr('data-modal-content')){
-			var result = $(e.relatedTarget).attr('data-modal-content');  
-			
+			var result = $(e.relatedTarget).attr('data-modal-content');   
 			modal.find('.modal-body').html(result);
 		}
+
+		if($(e.relatedTarget).attr('data-modal-video-src')){
+			// alert($(relatedTarget).attr('data-modal-video'));
+			// console.log($(e.relatedTarget).attr('data-modal-video-src'));
+			$(this).find('.image-cover').css('background-image','url('+$(e.relatedTarget).attr('data-modal-video-poster')+')');
+			$(this).find('.modal-title').html($(e.relatedTarget).attr('data-modal-video-title'));
+			$(this).find('video').append('<source id="remove_me" src="'+$(e.relatedTarget).attr('data-modal-video-src')+'"/>');
+			$(this).find('video')[0].currentTime = 0;
+			$(this).find('video')[0].play();
+
+		}
+
+	});
+	$('.modal').on('hide.bs.modal', function (e) {
+	  
+	  $(this).find('.image-cover').css('background-image',''); 
+	  $(this).find('.modal-title').html('');
+	  $(this).find('video')[0].pause();
+		$(this).find('#remove_me').remove(); 
 
 	});
 

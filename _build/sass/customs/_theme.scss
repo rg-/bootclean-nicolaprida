@@ -98,9 +98,10 @@ $font_semi_bold: 'gilroysb';
 	}
 }
 
+a,
 button,
 .btn{
-	&:focus{
+	&:focus,&:active{
 		box-shadow:none;
 		outline:none;
 	}

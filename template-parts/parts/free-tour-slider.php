@@ -50,10 +50,10 @@
 				 
 					$featured_img_low = get_the_post_thumbnail_url( get_the_ID(),'medium'); 
 					$featured_img_hi = get_the_post_thumbnail_url( get_the_ID(),'full');
-
+					$video = WPBC_get_field('archivo_de_video');
 		  		?>
 		  		<div class="item gp-1">
-			  		<a href="<?php echo esc_url( get_permalink() ); ?>" class="d-block">
+			  		<a href="#modal-free-tour" data-modal-video-title="<?php echo get_the_title(); ?>" data-modal-video-poster="<?php echo $featured_img_hi;?>" data-modal-video-src="<?php echo $video['url'];?>" data-toggle="modal" class="d-block">
 							<div class="hover_effect">
 								<div class="embed-responsive embed-responsive-4by3">
 									<div class="embed-responsive-item image-cover" style="background-image: url(<?php echo $featured_img_hi; ?>); ">
