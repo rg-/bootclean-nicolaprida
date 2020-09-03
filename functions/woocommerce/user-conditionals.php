@@ -18,36 +18,121 @@ function WPBC_detect_user_status(){
 		);
 		$status = array_intersect( $allowed_subscriber, (array) $user->roles ) ? 'subscriber' : $status; 
 
-		$subscription_active = wcs_user_has_subscription( $current_user_id, '', 'active' ); 
+		$subscription_active = wcs_user_has_subscription( $current_user_id, '', 'active' );
+		$subscription_pending = wcs_user_has_subscription( $current_user_id, '', 'pending' ); 
 		$subscription_on_hold = wcs_user_has_subscription( $current_user_id, '', 'on-hold' ); 
 		$subscription_cancelled = wcs_user_has_subscription( $current_user_id, '', 'cancelled' );
 		$subscription_switched = wcs_user_has_subscription( $current_user_id, '', 'switched' );
 		$subscription_expired = wcs_user_has_subscription( $current_user_id, '', 'expired' );
+
+
 		if($status == 'subscriber' || $status == 'customer'){
+			
 			if($subscription_active) {
 				$status .= '_active';
-			}else{
-				if($subscription_on_hold){
-					$status .= '_on_hold';
-				}
-				if($subscription_expired){
-					$status .= '_on_hold';
-				}
 			} 
+			if($subscription_pending) {
+				$status .= '_pending';
+			} 
+			if($subscription_on_hold){
+				$status .= '_on_hold';
+			}
+			if($subscription_cancelled){
+				$status .= '_cancelled';
+			}
+			if($subscription_expired){
+				$status .= '_expired';
+			}
+
 		}
 
 	} 
 	return $status; 
-}
-
-
-add_filter('wpbc/filter/layout/main_pageheader/end', function($out){ 
-	//$out .= do_shortcode('[WPBC_get_template name="parts/fixed-top-messages"]'); 
-	return $out;
-},10,1);  
+}  
 
 add_action('wpbc/layout/start',function(){
-	echo do_shortcode('[WPBC_get_template name="parts/fixed-top-messages"]');
+	// echo do_shortcode('[WPBC_get_template name="parts/fixed-top-messages"]');
+
+	$landing_page_id = WPBC_get_field('landing_page','options'); 
+	$landing_page = get_permalink( $landing_page_id );  
+
+	$settings_posts = get_field('settings_posts','options');
+	$videos_front_page = $settings_posts['videos_front_page'];
+	$videos_page = get_permalink( $videos_front_page );
+
+	$myaccount_page_id = get_option('woocommerce_myaccount_page_id');
+	$subscriptions_page = wc_get_endpoint_url('subscriptions', '', get_permalink($myaccount_page_id));
+
+	$user_status = WPBC_detect_user_status();
+	if( $user_status!='administrator' && !is_checkout() && is_user_logged_in() && (is_account_page() || is_page($landing_page_id)) ){
+		$message = ''; 
+		$bg_status = 'bg-danger';
+ 		switch ($user_status) {
+
+ 			case 'subscriber_active':
+ 				$message = '¡Tu subscripción está activa! <br> ';
+ 				$message .= 'Tienes acceso a todo el contenido privado, ver todos los <a class="link" href="'.$videos_page.'">Videos</a>';
+		    $bg_status = 'bg-success';
+		    break; 
+
+		  case 'subscriber_active_expired':
+ 				$message = '¡Tu subscripción está activa! <br> ';
+ 				$message .= 'Tienes acceso a todo el contenido privado, ver todos los <a class="link" href="'.$videos_page.'">Videos</a>';
+		    $bg_status = 'bg-success';
+		    break; 
+ 			
+ 			case 'customer':
+		    $message = 'Tu subscripción está inactiva.';
+		    if(!is_page($landing_page_id)){
+					$message .= ' Ir a <a class="link" href="'.$landing_page.'">Comprar</a>';
+				}
+		    break; 
+
+		  case 'customer_expired':
+		    $message = 'Tu subscripción ha expirado.';
+		    if(!is_page($landing_page_id)){
+					$message .= ' Ir a <a class="link" href="'.$landing_page.'">Comprar</a> o renueva tu <a class="link" href="'.$subscriptions_page.'">Subscripción</a>.';
+				}
+		    break; 
+
+		  case 'customer_pending_expired':
+		    $message = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Subscripción</a> pendiente de pago. <br>';
+				$message .= '<small>En unos momentos estará activa dependiendo del método de pago usado.</small>';
+		    break;
+
+		  case 'customer_on_hold_expired':
+		    $message = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Subscripción</a> pendiente de pago. <br>';
+				$message .= '<small>En unos momentos estará activa dependiendo del método de pago usado.</small>';
+		    break;  
+
+		  case 'customer_on_hold':
+		    $message = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Subscripción</a> pendiente de pago. <br>';
+				$message .= '<small>En unos momentos estará activa dependiendo del método de pago usado.</small>';
+		    break;
+
+		  case 'customer_pending':
+		    $message = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Subscripción</a> pendiente de pago. <br>';
+				$message .= '<small>En unos momentos estará activa dependiendo del método de pago usado.</small>';
+		    break;
+		  
+		  default:
+		    $message = $user_status;
+		}
+
+		if(!empty($message)){
+		?>
+<div class="fixed-top-messages">
+	<div class="container">
+		<div class="d-flex justify-content-center gpy-1">
+			<p class="d-none user_status"><?php echo $user_status; ?></p>
+			<p class="m-0 text-center"><?php echo $message; ?></p>
+		</div>
+	</div>
+	<i class="<?php echo $bg_status; ?> bg-message"></i>
+</div>
+		<?php
+		}
+	} 
 },31);
 
 

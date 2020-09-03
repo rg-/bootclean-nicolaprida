@@ -1,5 +1,6 @@
 <?php
 	$user_status = WPBC_detect_user_status();
+
 	if($user_status=='administrator'){
 		// return;
 	}
@@ -45,10 +46,16 @@
 		}else{
 			 
 		}
+		if($subscription_on_hold){
+			$msg .= ' Tu subscripción está pendiente de activación.';
+		}
 
 		$subscriptions = wcs_get_users_subscriptions($user_id);
 		if(!empty($subscriptions)){
 			foreach ($subscriptions as $sub){ 
+
+				$get_status = $sub->get_status();
+				$msg .= $get_status;
 				$end = $sub->get_date('end');
 				$end_display = esc_html( $sub->get_date_to_display( 'end' ) );
 				$current_time = date('Y-m-d H:i:s', time()); 
@@ -85,7 +92,7 @@
 		<div class="d-flex justify-content-center gpy-1">
 
 			<p class="d-none user_status"><?php echo $user_status; ?></p>
-
+			<?php echo $user_status;?>
 			<p class="m-0 text-center"><?php echo $msg; ?></p>
 
 		</div>
