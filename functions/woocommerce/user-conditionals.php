@@ -67,52 +67,53 @@ add_action('wpbc/layout/start',function(){
 	if( $user_status!='administrator' && !is_checkout() && is_user_logged_in() && (is_account_page() || is_page($landing_page_id)) ){
 		$message = ''; 
 		$bg_status = 'bg-danger';
+
+		$msg_pending = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Suscripción</a> pendiente de pago. ';
+		if(!is_page($landing_page_id)){
+			$msg_pending .= '<br>Recuerda que mientras tanto tienes acceso a nuestro <a class="link" href="'.$landing_page.'#free-tour">contenido gratuito</a>.';
+		}
  		switch ($user_status) {
 
  			case 'subscriber_active':
- 				$message = '¡Tu subscripción está activa! <br> ';
+ 				$message = '¡Tu suscripción está activa! <br> ';
  				$message .= 'Tienes acceso a todo el contenido privado, ver todos los <a class="link" href="'.$videos_page.'">Videos</a>';
 		    $bg_status = 'bg-success';
 		    break; 
 
 		  case 'subscriber_active_expired':
- 				$message = '¡Tu subscripción está activa! <br> ';
+ 				$message = '¡Tu suscripción está activa! <br> ';
  				$message .= 'Tienes acceso a todo el contenido privado, ver todos los <a class="link" href="'.$videos_page.'">Videos</a>';
 		    $bg_status = 'bg-success';
 		    break; 
  			
  			case 'customer':
-		    $message = 'Tu subscripción está inactiva.';
+		    $message = 'Tu suscripción está inactiva.';
 		    if(!is_page($landing_page_id)){
 					$message .= ' Ir a <a class="link" href="'.$landing_page.'">Comprar</a>';
 				}
 		    break; 
 
 		  case 'customer_expired':
-		    $message = 'Tu subscripción ha expirado.';
+		    $message = 'Tu suscripción ha expirado.';
 		    if(!is_page($landing_page_id)){
 					$message .= ' Ir a <a class="link" href="'.$landing_page.'">Comprar</a> o renueva tu <a class="link" href="'.$subscriptions_page.'">Subscripción</a>.';
 				}
 		    break; 
 
 		  case 'customer_pending_expired':
-		    $message = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Subscripción</a> pendiente de pago. <br>';
-				$message .= '<small>En unos momentos estará activa dependiendo del método de pago usado.</small>';
+		    $message = $msg_pending .' <br>'; 
 		    break;
 
 		  case 'customer_on_hold_expired':
-		    $message = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Subscripción</a> pendiente de pago. <br>';
-				$message .= '<small>En unos momentos estará activa dependiendo del método de pago usado.</small>';
+		    $message = $msg_pending .' <br>'; 
 		    break;  
 
 		  case 'customer_on_hold':
-		    $message = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Subscripción</a> pendiente de pago. <br>';
-				$message .= '<small>En unos momentos estará activa dependiendo del método de pago usado.</small>';
+		    $message = $msg_pending .' <br>'; 
 		    break;
 
 		  case 'customer_pending':
-		    $message = 'Tienes una <a class="link" href="'.$subscriptions_page.'">Subscripción</a> pendiente de pago. <br>';
-				$message .= '<small>En unos momentos estará activa dependiendo del método de pago usado.</small>';
+		    $message = $msg_pending .' <br>'; 
 		    break;
 		  
 		  default:
@@ -135,6 +136,45 @@ add_action('wpbc/layout/start',function(){
 	} 
 },31);
 
+
+add_filter( 'woocommerce_thankyou_order_received_text', function($text, $order){
+	if( is_wc_endpoint_url( 'order-received' ) && isset($_GET['key']) ){
+
+		$user_status = WPBC_detect_user_status();
+
+		$settings_posts = get_field('settings_posts','options');
+		$videos_front_page = $settings_posts['videos_front_page'];
+		$videos_page = get_permalink( $videos_front_page );
+
+		$myaccount_page_id = get_option('woocommerce_myaccount_page_id');
+		$myaccount_page = get_permalink($myaccount_page_id);
+
+		switch ($user_status) {
+
+			case 'subscriber_active':
+ 				$message = '¡Tu subscripción está activa! <br> ';
+ 				$message .= 'Tienes acceso a todo el contenido privado, ver todos los <a class="link" href="'.$videos_page.'"><u>Videos</u></a>'; 
+		    break; 
+
+			case 'customer_on_hold':
+		    $message = 'Tu pago está en espera de ser procesado.'; 
+		    $message .= ' <br><small>Ver el estado de tu suscripción en <a class="link" href="'.$myaccount_page.'"><u>Tu Cuenta</u></a></small>';
+		    break;
+
+			case 'customer_pending':
+		    $message = 'Tu pago está siendo procesado, tu subscripción se activará cuando se liquide el pago'; 
+		    $message .= ' <br><small>Ver el estado de tu suscripción en <a class="link" href="'.$myaccount_page.'"><u>Tu Cuenta</u></a></small>';
+		    break;
+		  
+		  default:
+		    $message = $user_status;
+
+		}
+
+		$text = $message;
+	}
+	return $text;
+},10,2 ); 
 
 /*
 	main-navbar args for woo pages here

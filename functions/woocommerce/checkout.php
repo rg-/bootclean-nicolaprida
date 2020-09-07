@@ -51,15 +51,7 @@ add_filter( 'laprida/single/page/entry-content/class', function($class){
 		$class = 'gmb-1 entry-content';
 	}
 	return $class; 
-},10, 3); 
-
-
-add_filter( 'woocommerce_thankyou_order_received_text', function($text, $order){
-	if( is_wc_endpoint_url( 'order-received' ) && isset($_GET['key']) ){
-		$text = 'Tu pago está siendo procesado y está pendiente de activación <br><small>Revisa tu correo recibirás un email con las instrucciones de acceso.</small>';
-	}
-	return $text;
-},10,2 ); 
+},10, 3);  
 
 
 add_filter('wpbc/filter/page/single/class',function($class){
