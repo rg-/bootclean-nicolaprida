@@ -51,9 +51,27 @@ function WPBC_detect_user_status(){
 }  
 
 add_action('wpbc/layout/start',function(){
+
+	/*
+
+	TODOING....
+
+		ver template-parts/parts/fixed-top-messages.php
+
+			- mensaje cuando se esta por expirar
+			- resto de statuses, checkear y listar aca abajo todas las opciones
+
+	*/
+
 	// echo do_shortcode('[WPBC_get_template name="parts/fixed-top-messages"]');
 
+
+	$user_status = WPBC_detect_user_status(); 
+
 	$landing_page_id = WPBC_get_field('landing_page','options'); 
+	
+	if('publish' != get_post_status( $landing_page_id )) return;
+
 	$landing_page = get_permalink( $landing_page_id );  
 
 	$settings_posts = get_field('settings_posts','options');
@@ -63,7 +81,7 @@ add_action('wpbc/layout/start',function(){
 	$myaccount_page_id = get_option('woocommerce_myaccount_page_id');
 	$subscriptions_page = wc_get_endpoint_url('subscriptions', '', get_permalink($myaccount_page_id));
 
-	$user_status = WPBC_detect_user_status();
+	
 	if( $user_status!='administrator' && !is_checkout() && is_user_logged_in() && (is_account_page() || is_page($landing_page_id)) ){
 		$message = ''; 
 		$bg_status = 'bg-danger';
@@ -220,7 +238,7 @@ add_filter('wpbc/filter/layout/main-navbar/defaults', function($args){
 	if( $user_status!='administrator' && is_user_logged_in() ){ 
 		$user_id = get_current_user_id();
 		$subscription_active = wcs_user_has_subscription( $user_id, '', 'active' ); 
-		if(!$subscription_active){
+		if(!$subscription_active && $user_status != 'subscriber'){
 			$args['wp_nav_menu']['theme_location'] = 'right_menu';
 		}
 	}
