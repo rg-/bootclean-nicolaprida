@@ -185,7 +185,11 @@ add_action('woocommerce_after_lost_password_confirmation_message',function(){
 add_action('woocommerce_account_dashboard', function(){
 	$current_user = wp_get_current_user();
 	$user_id = get_current_user_id();
+
+	$user_status = WPBC_detect_user_status(); 
+
 	$display_name = esc_html( $current_user->display_name );
+	
 	?>
 	<div class="woo-account-panel-dashboard">
 
@@ -211,9 +215,15 @@ add_action('woocommerce_account_dashboard', function(){
 		<p class="gmb-2">Desde el tablero de tu cuenta puedes ver y administrar:</p>
 
 		<ul>
-			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'orders' ) ); ?>">Pedidos <br><small>Ver tus órdenes y pedidos.</small></a></li>
-			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'subscriptions' ) ); ?>">Subscripciones <br><small>Ver el estado de tus subscripciones.</small></a></li>
-			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address' ) ); ?>">Direcciones <br><small>Administrar tu dirección de Facturación</small></a></li>
+			
+
+			<?php if( $user_status != 'subscriber_premium' ){ ?>
+				<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'orders' ) ); ?>">Pedidos <br><small>Ver tus órdenes y pedidos.</small></a></li>
+				<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'subscriptions' ) ); ?>">Subscripciones <br><small>Ver el estado de tus subscripciones.</small></a></li>
+				<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address' ) ); ?>">Direcciones <br><small>Administrar tu dirección de Facturación</small></a></li>
+			<?php } ?>
+			
+			
 			<li class="mb-3"><a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-account' ) ); ?>">Detalles de la cuenta <br><small>Editar tus datos de usuario y cambiar tu contraseña.</small></a></li>
 		</ul>
 	</div>

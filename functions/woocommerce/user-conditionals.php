@@ -10,13 +10,19 @@ function WPBC_detect_user_status(){
 			'administrator',
 			'editor',
 			'shop_manager', 
+			
 		);
 		$status = array_intersect( $allowed_roles, (array) $user->roles ) ? 'administrator' : $status;
 
 		$allowed_subscriber = array(
-			'subscriber', 
+			'subscriber',  
 		);
 		$status = array_intersect( $allowed_subscriber, (array) $user->roles ) ? 'subscriber' : $status; 
+
+		$premium_subscriber = array(
+			'premium_subscriber',  
+		);
+		$status = array_intersect( $premium_subscriber, (array) $user->roles ) ? 'subscriber_premium' : $status;  
 
 		$subscription_active = wcs_user_has_subscription( $current_user_id, '', 'active' );
 		$subscription_pending = wcs_user_has_subscription( $current_user_id, '', 'pending' ); 
@@ -67,10 +73,12 @@ add_action('wpbc/layout/start',function(){
 
 
 	$user_status = WPBC_detect_user_status(); 
-
-	$landing_page_id = WPBC_get_field('landing_page','options'); 
 	
-	if('publish' != get_post_status( $landing_page_id )) return;
+	$landing_page_id = WPBC_get_field('landing_page','options'); 
+	if(is_page($landing_page_id)){
+		if('publish' != get_post_status( $landing_page_id )) return;
+	}
+	//if('publish' != get_post_status( $landing_page_id )) return;
 
 	$landing_page = get_permalink( $landing_page_id );  
 
@@ -81,8 +89,9 @@ add_action('wpbc/layout/start',function(){
 	$myaccount_page_id = get_option('woocommerce_myaccount_page_id');
 	$subscriptions_page = wc_get_endpoint_url('subscriptions', '', get_permalink($myaccount_page_id));
 
-	
+	// _print_code($user_status);
 	if( $user_status!='administrator' && !is_checkout() && is_user_logged_in() && (is_account_page() || is_page($landing_page_id)) ){
+ 
 		$message = ''; 
 		$bg_status = 'bg-danger';
 
@@ -91,6 +100,12 @@ add_action('wpbc/layout/start',function(){
 			$msg_pending .= '<br>Recuerda que mientras tanto tienes acceso a nuestro <a class="link" href="'.$landing_page.'#free-tour">contenido gratuito</a>.';
 		}
  		switch ($user_status) {
+
+			case 'subscriber_premium':
+ 				$message = '¡Tu Suscripción Premium está activa! <br> ';
+ 				$message .= 'Tienes acceso a todo el contenido privado, ver todos los <a class="link" href="'.$videos_page.'">Videos</a>';
+		    $bg_status = 'bg-success';
+		    break; 
 
  			case 'subscriber_active':
  				$message = '¡Tu suscripción está activa! <br> ';
@@ -239,8 +254,12 @@ add_filter('wpbc/filter/layout/main-navbar/defaults', function($args){
 		$user_id = get_current_user_id();
 		$subscription_active = wcs_user_has_subscription( $user_id, '', 'active' ); 
 		if(!$subscription_active && $user_status != 'subscriber'){
-			$args['wp_nav_menu']['theme_location'] = 'right_menu';
+			$args['wp_nav_menu']['theme_location'] = 'right_menu'; 
 		}
+	}
+
+	if( $user_status == 'subscriber_premium' ) {
+		$args['wp_nav_menu']['theme_location'] = 'primary'; 
 	}
 
 	return $args;
@@ -260,3 +279,15 @@ add_filter('wpbc/builder/template_part_row', function($do_shortcode, $post_id, $
 	}
 	return $do_shortcode;
 },10,4);
+
+
+add_filter( 'woocommerce_account_menu_items', function ( $menu_links ){
+ 	$user_status = WPBC_detect_user_status(); 
+ 	if( $user_status == 'subscriber_premium' ) {
+		unset( $menu_links['subscriptions'] );
+		unset( $menu_links['orders'] );
+		unset( $menu_links['edit-address'] );
+	}
+	return $menu_links;
+ 
+},10,1 );
