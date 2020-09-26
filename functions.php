@@ -106,15 +106,15 @@ add_action('init', 'custom_disable_admin_bar', 9);
 /* NEW USER ROLE "PREMIUM SUBSCRIBER" */
 
 function laprida__update_custom_roles() { 
-
-    if ( get_option( 'laprida_custom_roles_version' ) < 1 ) {
-        
-        //globalize $wp_roles
-        global $wp_roles;
+    global $wp_roles;
         //set use_db to flase
         $wp_roles->use_db = false;
         //then add your role
         $wp_roles->add_role( 'premium_subscriber', 'Premium Subscriber', get_role('customer')->capabilities );
+    if ( get_option( 'laprida_custom_roles_version' ) < 1 ) {
+        
+        //globalize $wp_roles
+        
 
         // add_role( 'premium_subscriber', 'Premium Subscriber', get_role('customer')->capabilities );
         update_option( 'laprida_custom_roles_version', 1 );
