@@ -24,6 +24,10 @@ function custom_wp_nav_menu_items($items, $args){
 			$active = '';
 		}
 
+		$current_user_id = get_current_user_id();
+
+		$items .= '<li class="menu-item nav-item nav-user nav-mi-cuenta"><a title="Mis Turnos" href="https://reservas.nicolaprida.com/mis-turnos/?u='.$current_user_id.'" class="nav-link" >Mis Turnos</a></li>';
+
 		$items .= '<li class="menu-item nav-item nav-user nav-mi-cuenta"><a title="Mi Cuenta" href="'.$url .'" class="nav-link '.$active.'" >Mi Cuenta</a></li>';
 		$items .= '<li class="menu-item nav-item nav-user nav-salir"><a title="Salir" href="'. esc_url( wc_logout_url() ) .'" class="nav-link" >Salir</a></li>';
 	}else{ 
