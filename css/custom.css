@@ -8449,6 +8449,8 @@ a.nav-link {
 
 body.single-video .entry-content, body.single-post .entry-content {
   font-size: 18px; }
+  body.single-video .entry-content a, body.single-post .entry-content a {
+    text-decoration: underline; }
   body.single-video .entry-content h2, body.single-post .entry-content h2 {
     font-size: 36px;
     font-family: "gilroy";
