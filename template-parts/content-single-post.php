@@ -28,7 +28,12 @@
 		);
 
 		$videos_relacionados = WPBC_get_field('videos_relacionados'); 
-		//_print_code($videos_relacionados);
+		?>
+		<div class="d-none WPBC_TEST">
+			<?php _print_code($videos_relacionados); ?>
+		</div>
+		<?php
+		//
 		if(!empty($videos_relacionados)){
 			//$videos_relacionados = implode(', ', $videos_relacionados); 
 			$related_args['post__in'] = $videos_relacionados;
