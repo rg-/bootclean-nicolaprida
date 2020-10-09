@@ -8152,6 +8152,8 @@ b, strong {
         line-height: 44px; } }
   .section-title.sm {
     font-size: 24px; }
+  .section-title.xs {
+    font-size: 16px; }
   .section-title.videos-title {
     margin-bottom: 37px; }
   .section-title.rutinas-title {

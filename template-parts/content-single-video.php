@@ -67,7 +67,7 @@
 
 <?php 
 	$post_id = $post->ID;
-	$post_class = apply_filters('wpbc/filter/post/loop/class','col-lg-4 gmb-3 video-post'); 
+	$post_class = apply_filters('wpbc/filter/post/loop/class','col-lg-4 gmb-2 video-post'); 
  
 	$featured_img_low = get_the_post_thumbnail_url( $post_id,'medium'); 
 	$featured_img_hi = get_the_post_thumbnail_url( $post_id,'full');
@@ -81,8 +81,8 @@
 		</div>
 		<span class="btn btn-more sm"><img src="[WPBC_get_stylesheet_directory_uri]/images/theme/icon-play.png" width="60" alt=" "/></span>
 	</a>
-	<div class="gmt-2">
-		<a href="<?php echo esc_url( get_permalink($post_id) ); ?>"  class="d-block"><h6 class="section-title sm"><?php the_title(); ?></h6></a> 
+	<div class="gmt-1">
+		<a href="<?php echo esc_url( get_permalink($post_id) ); ?>"  class="d-block"><h6 class="section-title xs"><?php the_title(); ?></h6></a> 
 	</div>
 </article>
 
